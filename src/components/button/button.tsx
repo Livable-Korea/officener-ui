@@ -1,5 +1,3 @@
-import './button.css';
-
 interface ButtonProps {
   primary?: boolean;
   backgroundColor?: string;
@@ -19,10 +17,12 @@ export const Button = ({
   return (
     <button
       type="button"
-      className={['demo-button', `demo-button--${size}`, mode].join(' ')}
+      className={[' demo-button', `demo-button--${size}`, mode].join(' ')}
       style={{ backgroundColor }}
       {...props}
     >
+      asdfadsf
+      <span className="text-red-500">asdf</span>
       {label}
     </button>
   );
