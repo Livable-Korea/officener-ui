@@ -1,2 +1,8 @@
 import './global.css';
-export { Button } from '@/components/button/button';
+
+// utils
+export { cn } from '@/lib/utils';
+
+// components
+export { Button, buttonVariants } from '@/components/ui/button';
+export type { ButtonProps } from '@/components/ui/button';
