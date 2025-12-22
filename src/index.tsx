@@ -26,6 +26,9 @@ export type { CheckboxProps } from '@/components/ui/checkbox';
 export { Chip, chipVariants } from '@/components/ui/chip';
 export type { ChipProps } from '@/components/ui/chip';
 
+export { Input, inputVariants } from '@/components/ui/input';
+export type { InputProps } from '@/components/ui/input';
+
 export {
   Breadcrumb,
   BreadcrumbList,
@@ -55,6 +58,7 @@ export {
   HeadingTitle,
   HeadingActions,
   HeadingBottom,
+  Heading,
   headingTabVariants,
 } from '@/components/ui/heading';
 export type {
