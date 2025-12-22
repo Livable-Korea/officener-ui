@@ -23,6 +23,9 @@ export type {
 export { Checkbox } from '@/components/ui/checkbox';
 export type { CheckboxProps } from '@/components/ui/checkbox';
 
+export { Chip, chipVariants } from '@/components/ui/chip';
+export type { ChipProps } from '@/components/ui/chip';
+
 export {
   Breadcrumb,
   BreadcrumbList,
