@@ -41,3 +41,27 @@ export type {
   BreadcrumbSeparatorProps,
   BreadcrumbEllipsisProps,
 } from '@/components/ui/breadcrumb';
+
+export {
+  HeadingRoot,
+  HeadingBreadcrumb,
+  HeadingBadges,
+  HeadingContent,
+  HeadingTabs,
+  HeadingTab,
+  HeadingTitle,
+  HeadingActions,
+  HeadingBottom,
+  headingTabVariants,
+} from '@/components/ui/heading';
+export type {
+  HeadingRootProps,
+  HeadingBreadcrumbProps,
+  HeadingBadgesProps,
+  HeadingContentProps,
+  HeadingTabsProps,
+  HeadingTabProps,
+  HeadingTitleProps,
+  HeadingActionsProps,
+  HeadingBottomProps,
+} from '@/components/ui/heading';
