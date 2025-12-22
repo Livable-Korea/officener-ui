@@ -30,6 +30,16 @@ export { Input, inputVariants } from '@/components/ui/input';
 export type { InputProps } from '@/components/ui/input';
 
 export {
+  RadioGroup,
+  RadioGroupItem,
+  radioGroupItemVariants,
+} from '@/components/ui/radio-group';
+export type {
+  RadioGroupProps,
+  RadioGroupItemProps,
+} from '@/components/ui/radio-group';
+
+export {
   Breadcrumb,
   BreadcrumbList,
   BreadcrumbItem,
