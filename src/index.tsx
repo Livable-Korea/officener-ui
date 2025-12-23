@@ -66,7 +66,6 @@ export {
   HeadingTitle,
   HeadingActions,
   HeadingBottom,
-  Heading,
   headingTabVariants,
 } from '@/components/ui/heading';
 export type {
