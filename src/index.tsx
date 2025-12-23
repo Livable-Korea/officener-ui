@@ -1,5 +1,3 @@
-import './global.css';
-
 // utils
 export { cn } from '@/lib/utils';
 
