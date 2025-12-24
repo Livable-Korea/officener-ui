@@ -124,3 +124,10 @@ export {
   tabsTriggerVariants,
 } from '@/components/ui/tabs';
 export type { TabItem, TabsComponentProps } from '@/components/ui/tabs';
+
+export {
+  Toggle,
+  toggleVariants,
+  toggleThumbVariants,
+} from '@/components/ui/toggle';
+export type { ToggleProps } from '@/components/ui/toggle';
