@@ -152,3 +152,21 @@ export type {
   PaginationEllipsisProps,
   PaginationComponentProps,
 } from '@/components/ui/pagination';
+
+export {
+  Steps,
+  StepItem,
+  StepConnector,
+  StepsComponent,
+  stepCircleVariants,
+  stepConnectorVariants,
+  stepLabelVariants,
+} from '@/components/ui/steps';
+export type {
+  StepsProps,
+  StepItemProps,
+  StepConnectorProps,
+  StepData,
+  StepsComponentProps,
+  StepStatus,
+} from '@/components/ui/steps';
