@@ -79,3 +79,36 @@ export type {
   HeadingActionsProps,
   HeadingBottomProps,
 } from '@/components/ui/heading';
+
+export {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverAnchor,
+} from '@/components/ui/popover';
+
+export {
+  Command,
+  CommandInput,
+  CommandList,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
+  CommandShortcut,
+  CommandSeparator,
+} from '@/components/ui/command';
+
+export {
+  Dropdown,
+  OptionDropdown,
+  InputDropdown,
+  MultiDropdown,
+  dropdownVariants,
+} from '@/components/ui/dropdown';
+export type {
+  DropdownProps,
+  OptionDropdownProps,
+  InputDropdownProps,
+  MultiDropdownProps,
+  DropdownItem,
+} from '@/components/ui/dropdown';
