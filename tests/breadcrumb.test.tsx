@@ -1,10 +1,10 @@
-import { render, screen, cleanup } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
 import {
   Breadcrumb,
-  BreadcrumbList,
   BreadcrumbItem,
   BreadcrumbLink,
+  BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '../src/components/ui/breadcrumb';
@@ -26,12 +26,12 @@ describe('Breadcrumb', () => {
             <BreadcrumbPage>Current</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
-      </Breadcrumb>
+      </Breadcrumb>,
     );
 
     expect(screen.getByRole('navigation')).toHaveAttribute(
       'aria-label',
-      'breadcrumb'
+      'breadcrumb',
     );
     expect(screen.getByText('Home')).toBeInTheDocument();
     expect(screen.getByText('Current')).toBeInTheDocument();
@@ -55,7 +55,7 @@ describe('Breadcrumb', () => {
             </BreadcrumbLink>
           </BreadcrumbItem>
         </BreadcrumbList>
-      </Breadcrumb>
+      </Breadcrumb>,
     );
 
     expect(screen.getByText('Test Link')).toHaveAttribute('href', '/test');
@@ -69,7 +69,7 @@ describe('Breadcrumb', () => {
             <BreadcrumbPage>Current Page</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
-      </Breadcrumb>
+      </Breadcrumb>,
     );
 
     const page = screen.getByText('Current Page');
@@ -89,7 +89,7 @@ describe('Breadcrumb', () => {
             <BreadcrumbPage>Separator Current</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
-      </Breadcrumb>
+      </Breadcrumb>,
     );
 
     const separators = container.querySelectorAll('[role="presentation"]');

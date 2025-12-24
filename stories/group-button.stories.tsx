@@ -1,6 +1,6 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { ChevronDown, Check, Grid } from 'lucide-react';
+import { Check, ChevronDown, Grid } from 'lucide-react';
+import React from 'react';
 import {
   GroupButton,
   GroupButtonItem,

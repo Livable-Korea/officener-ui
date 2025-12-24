@@ -1,7 +1,7 @@
-import * as React from 'react';
+import { cn } from '@/lib/utils';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { Check, Minus } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import * as React from 'react';
 
 export interface CheckboxProps
   extends React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root> {
@@ -24,7 +24,7 @@ const Checkbox = React.forwardRef<
       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600/10 focus-visible:ring-offset-0',
       'disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-gray-300',
       error && 'border-red-500',
-      className
+      className,
     )}
     {...props}
   >

@@ -1,5 +1,5 @@
+import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import * as React from 'react';
-import { render, screen, cleanup, fireEvent } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
 import { RadioGroup, RadioGroupItem } from '../src/components/ui/radio-group';
 
@@ -13,7 +13,7 @@ describe('RadioGroup', () => {
       <RadioGroup>
         <RadioGroupItem value="option-1" aria-label="Option 1" />
         <RadioGroupItem value="option-2" aria-label="Option 2" />
-      </RadioGroup>
+      </RadioGroup>,
     );
     expect(screen.getByRole('radiogroup')).toBeInTheDocument();
     expect(screen.getAllByRole('radio')).toHaveLength(2);
@@ -24,7 +24,7 @@ describe('RadioGroup', () => {
       <RadioGroup defaultValue="option-1">
         <RadioGroupItem value="option-1" aria-label="Option 1" />
         <RadioGroupItem value="option-2" aria-label="Option 2" />
-      </RadioGroup>
+      </RadioGroup>,
     );
     expect(screen.getByLabelText('Option 1')).toBeChecked();
     expect(screen.getByLabelText('Option 2')).not.toBeChecked();
@@ -35,7 +35,7 @@ describe('RadioGroup', () => {
       <RadioGroup defaultValue="option-1">
         <RadioGroupItem value="option-1" aria-label="Option 1" />
         <RadioGroupItem value="option-2" aria-label="Option 2" />
-      </RadioGroup>
+      </RadioGroup>,
     );
 
     fireEvent.click(screen.getByLabelText('Option 2'));
@@ -47,21 +47,21 @@ describe('RadioGroup', () => {
     const { container, rerender } = render(
       <RadioGroup>
         <RadioGroupItem value="test" size="md" />
-      </RadioGroup>
+      </RadioGroup>,
     );
     expect(container.querySelector('[role="radio"]')).toHaveClass('size-4');
 
     rerender(
       <RadioGroup>
         <RadioGroupItem value="test" size="lg" />
-      </RadioGroup>
+      </RadioGroup>,
     );
     expect(container.querySelector('[role="radio"]')).toHaveClass('size-5');
 
     rerender(
       <RadioGroup>
         <RadioGroupItem value="test" size="xl" />
-      </RadioGroup>
+      </RadioGroup>,
     );
     expect(container.querySelector('[role="radio"]')).toHaveClass('size-6');
   });
@@ -70,10 +70,10 @@ describe('RadioGroup', () => {
     const { container } = render(
       <RadioGroup>
         <RadioGroupItem value="test" error />
-      </RadioGroup>
+      </RadioGroup>,
     );
     expect(container.querySelector('[role="radio"]')).toHaveClass(
-      'border-red-500'
+      'border-red-500',
     );
   });
 
@@ -81,7 +81,7 @@ describe('RadioGroup', () => {
     render(
       <RadioGroup>
         <RadioGroupItem value="test" disabled aria-label="Disabled option" />
-      </RadioGroup>
+      </RadioGroup>,
     );
     expect(screen.getByLabelText('Disabled option')).toBeDisabled();
   });
@@ -90,10 +90,10 @@ describe('RadioGroup', () => {
     const { container } = render(
       <RadioGroup className="custom-class">
         <RadioGroupItem value="test" />
-      </RadioGroup>
+      </RadioGroup>,
     );
     expect(container.querySelector('[role="radiogroup"]')).toHaveClass(
-      'custom-class'
+      'custom-class',
     );
   });
 
@@ -101,10 +101,10 @@ describe('RadioGroup', () => {
     const { container } = render(
       <RadioGroup>
         <RadioGroupItem value="test" className="item-custom" />
-      </RadioGroup>
+      </RadioGroup>,
     );
     expect(container.querySelector('[role="radio"]')).toHaveClass(
-      'item-custom'
+      'item-custom',
     );
   });
 });

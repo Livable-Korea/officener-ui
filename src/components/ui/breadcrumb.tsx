@@ -1,14 +1,14 @@
-import * as React from 'react';
+import { cn } from '@/lib/utils';
 import { Slot } from '@radix-ui/react-slot';
 import { ChevronRight, MoreHorizontal } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import * as React from 'react';
 
 export interface BreadcrumbProps extends React.ComponentPropsWithoutRef<'nav'> {
   separator?: React.ReactNode;
 }
 
 const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
-  ({ ...props }, ref) => <nav ref={ref} aria-label="breadcrumb" {...props} />
+  ({ ...props }, ref) => <nav ref={ref} aria-label="breadcrumb" {...props} />,
 );
 Breadcrumb.displayName = 'Breadcrumb';
 
@@ -21,11 +21,11 @@ const BreadcrumbList = React.forwardRef<HTMLOListElement, BreadcrumbListProps>(
       ref={ref}
       className={cn(
         'flex flex-wrap items-center break-words text-sm text-muted-foreground',
-        className
+        className,
       )}
       {...props}
     />
-  )
+  ),
 );
 BreadcrumbList.displayName = 'BreadcrumbList';
 
@@ -39,7 +39,7 @@ const BreadcrumbItem = React.forwardRef<HTMLLIElement, BreadcrumbItemProps>(
       className={cn('inline-flex items-center gap-1.5', className)}
       {...props}
     />
-  )
+  ),
 );
 BreadcrumbItem.displayName = 'BreadcrumbItem';
 
@@ -57,12 +57,12 @@ const BreadcrumbLink = React.forwardRef<HTMLAnchorElement, BreadcrumbLinkProps>(
         ref={ref}
         className={cn(
           'cursor-pointer py-1.5 text-xs font-medium text-gray-500 transition-colors hover:text-foreground',
-          className
+          className,
         )}
         {...props}
       />
     );
-  }
+  },
 );
 BreadcrumbLink.displayName = 'BreadcrumbLink';
 
@@ -79,7 +79,7 @@ const BreadcrumbPage = React.forwardRef<HTMLSpanElement, BreadcrumbPageProps>(
       className={cn('py-1.5 text-xs font-medium text-gray-900', className)}
       {...props}
     />
-  )
+  ),
 );
 BreadcrumbPage.displayName = 'BreadcrumbPage';
 

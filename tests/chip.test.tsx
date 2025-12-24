@@ -1,5 +1,5 @@
+import { cleanup, render, screen } from '@testing-library/react';
 import * as React from 'react';
-import { render, screen, cleanup } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
 import { Chip } from '../src/components/ui/chip';
 
@@ -42,7 +42,7 @@ describe('Chip', () => {
     render(
       <Chip asChild>
         <button type="button">Button Chip</button>
-      </Chip>
+      </Chip>,
     );
     const button = screen.getByRole('button');
     expect(button).toBeInTheDocument();

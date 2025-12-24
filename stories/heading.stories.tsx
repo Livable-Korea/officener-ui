@@ -1,26 +1,26 @@
-import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import {
-  HeadingRoot,
-  HeadingBreadcrumb,
-  HeadingBadges,
-  HeadingContent,
-  HeadingTabs,
-  HeadingTab,
-  HeadingTitle,
-  HeadingActions,
-  HeadingBottom,
-} from '../src/components/ui/heading';
+import * as React from 'react';
+import { Badge } from '../src/components/ui/badge';
 import {
   Breadcrumb,
-  BreadcrumbList,
   BreadcrumbItem,
   BreadcrumbLink,
+  BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '../src/components/ui/breadcrumb';
-import { Badge } from '../src/components/ui/badge';
 import { Button } from '../src/components/ui/button';
+import {
+  HeadingActions,
+  HeadingBadges,
+  HeadingBottom,
+  HeadingBreadcrumb,
+  HeadingContent,
+  HeadingRoot,
+  HeadingTab,
+  HeadingTabs,
+  HeadingTitle,
+} from '../src/components/ui/heading';
 
 const meta = {
   title: 'Components/Heading',

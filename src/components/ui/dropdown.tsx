@@ -1,10 +1,9 @@
-import * as React from 'react';
-import { Check, ChevronDown, Plus } from 'lucide-react';
-import { ArrowDown2, SearchNormal1, CloseCircle } from 'iconsax-react';
-import { cva } from 'class-variance-authority';
 import type { PopoverContentProps } from '@radix-ui/react-popover';
+import { cva } from 'class-variance-authority';
+import { ArrowDown2, CloseCircle, SearchNormal1 } from 'iconsax-react';
+import { Check, ChevronDown, Plus } from 'lucide-react';
+import * as React from 'react';
 
-import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import {
@@ -20,6 +19,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
+import { cn } from '@/lib/utils';
 
 // CVA variants
 const dropdownVariants = {
@@ -42,7 +42,7 @@ const dropdownVariants = {
         size: 'sm',
         status: 'default',
       },
-    }
+    },
   ),
   item: cva('text-sm leading-4 text-gray-500', {
     variants: {
@@ -166,7 +166,7 @@ const Dropdown = React.forwardRef<HTMLButtonElement, DropdownProps>(
       align,
       iconClassName,
     },
-    ref
+    ref,
   ) => {
     const [open, setOpen] = React.useState(false);
     const selectedRef = React.useRef<HTMLDivElement | null>(null);
@@ -202,7 +202,7 @@ const Dropdown = React.forwardRef<HTMLButtonElement, DropdownProps>(
                   size,
                   status: error ? 'error' : disabled ? 'disabled' : 'default',
                 }),
-                className
+                className,
               )}
             >
               <span className="flex-1 truncate text-start">
@@ -217,7 +217,7 @@ const Dropdown = React.forwardRef<HTMLButtonElement, DropdownProps>(
                 className={cn(
                   'shrink-0 text-gray-500 transition-transform duration-200 group-data-[state=open]:rotate-180',
                   open && 'rotate-180',
-                  iconClassName
+                  iconClassName,
                 )}
               />
             </Button>
@@ -230,13 +230,15 @@ const Dropdown = React.forwardRef<HTMLButtonElement, DropdownProps>(
               status: error ? 'error' : 'default',
             }),
             'w-[var(--radix-popover-trigger-width)] overflow-hidden',
-            widthClassName
+            widthClassName,
           )}
           align={align}
         >
           <Command
             className={cn(
-              size === 'sm' || size === 'base' ? 'rounded-lg' : 'rounded-[10px]'
+              size === 'sm' || size === 'base'
+                ? 'rounded-lg'
+                : 'rounded-[10px]',
             )}
           >
             {isSearch && (
@@ -267,7 +269,7 @@ const Dropdown = React.forwardRef<HTMLButtonElement, DropdownProps>(
                     className={cn(
                       'relative flex h-9 w-full items-center p-3 text-sm font-medium leading-4 text-gray-500',
                       dropdownVariants.item({ size }),
-                      value === item.value && 'bg-blue-50 text-blue-500'
+                      value === item.value && 'bg-blue-50 text-blue-500',
                     )}
                   >
                     <span className="flex-1 truncate">{item.label}</span>
@@ -275,7 +277,7 @@ const Dropdown = React.forwardRef<HTMLButtonElement, DropdownProps>(
                       size={size === 'sm' ? 16 : size === 'base' ? 18 : 20}
                       className={cn(
                         'ml-auto',
-                        value === item.value ? 'opacity-100' : 'opacity-0'
+                        value === item.value ? 'opacity-100' : 'opacity-0',
                       )}
                     />
                   </CommandItem>
@@ -287,7 +289,7 @@ const Dropdown = React.forwardRef<HTMLButtonElement, DropdownProps>(
         </PopoverContent>
       </Popover>
     );
-  }
+  },
 );
 Dropdown.displayName = 'Dropdown';
 
@@ -295,7 +297,7 @@ Dropdown.displayName = 'Dropdown';
 const OptionDropdown = React.forwardRef<HTMLButtonElement, OptionDropdownProps>(
   (
     { children, size = 'sm', data, isSearch = false, className, ...props },
-    ref
+    ref,
   ) => {
     const [open, setOpen] = React.useState(false);
 
@@ -308,13 +310,15 @@ const OptionDropdown = React.forwardRef<HTMLButtonElement, OptionDropdownProps>(
           className={cn(
             dropdownVariants.content({ size }),
             'w-[var(--radix-popover-trigger-width)] overflow-hidden',
-            className
+            className,
           )}
           {...props}
         >
           <Command
             className={cn(
-              size === 'sm' || size === 'base' ? 'rounded-lg' : 'rounded-[10px]'
+              size === 'sm' || size === 'base'
+                ? 'rounded-lg'
+                : 'rounded-[10px]',
             )}
           >
             {isSearch && (
@@ -337,7 +341,7 @@ const OptionDropdown = React.forwardRef<HTMLButtonElement, OptionDropdownProps>(
                     className={cn(
                       'relative flex h-9 w-full items-center p-3 text-sm font-medium leading-4 text-gray-500',
                       dropdownVariants.item({ size }),
-                      item.className
+                      item.className,
                     )}
                   >
                     <span className="flex-1 truncate">{item.label}</span>
@@ -349,7 +353,7 @@ const OptionDropdown = React.forwardRef<HTMLButtonElement, OptionDropdownProps>(
         </PopoverContent>
       </Popover>
     );
-  }
+  },
 );
 OptionDropdown.displayName = 'OptionDropdown';
 
@@ -366,7 +370,7 @@ const InputDropdown = React.forwardRef<HTMLDivElement, InputDropdownProps>(
       className,
       error = false,
     },
-    ref
+    ref,
   ) => {
     const [open, setOpen] = React.useState(false);
     const [searchValue, setSearchValue] = React.useState(value || '');
@@ -427,7 +431,7 @@ const InputDropdown = React.forwardRef<HTMLDivElement, InputDropdownProps>(
         className={cn(
           size === 'sm' || size === 'base' ? 'rounded-lg' : 'rounded-[10px]',
           'border',
-          error ? 'border-red-500' : 'border-gray-300'
+          error ? 'border-red-500' : 'border-gray-300',
         )}
       >
         <div
@@ -437,7 +441,7 @@ const InputDropdown = React.forwardRef<HTMLDivElement, InputDropdownProps>(
               size,
               status: error ? 'error' : 'default',
             }),
-            className
+            className,
           )}
         >
           <SearchNormal1
@@ -445,14 +449,14 @@ const InputDropdown = React.forwardRef<HTMLDivElement, InputDropdownProps>(
             color="currentColor"
             className={cn(
               'mr-2 shrink-0 text-gray-500',
-              open && 'text-blue-500'
+              open && 'text-blue-500',
             )}
           />
           <input
             ref={inputRef}
             className={cn(
               inputVariants.input({ size }),
-              'h-auto w-full placeholder:text-gray-300'
+              'h-auto w-full placeholder:text-gray-300',
             )}
             value={searchValue}
             placeholder={placeholder}
@@ -481,7 +485,7 @@ const InputDropdown = React.forwardRef<HTMLDivElement, InputDropdownProps>(
             <CommandGroup className="p-0">
               {data
                 .filter((item) =>
-                  item.label.toLowerCase().includes(searchValue.toLowerCase())
+                  item.label.toLowerCase().includes(searchValue.toLowerCase()),
                 )
                 .map((item) => (
                   <CommandItem
@@ -494,7 +498,7 @@ const InputDropdown = React.forwardRef<HTMLDivElement, InputDropdownProps>(
                     className={cn(
                       'relative flex h-9 w-full items-center p-3 text-sm font-medium leading-4 text-gray-500',
                       inputVariants.item({ size }),
-                      value === item.value && 'bg-blue-50 text-blue-500'
+                      value === item.value && 'bg-blue-50 text-blue-500',
                     )}
                   >
                     {typeof item.label === 'string' ? (
@@ -506,7 +510,7 @@ const InputDropdown = React.forwardRef<HTMLDivElement, InputDropdownProps>(
                       size={size === 'sm' ? 16 : size === 'base' ? 18 : 20}
                       className={cn(
                         'ml-auto',
-                        value === item.value ? 'opacity-100' : 'opacity-0'
+                        value === item.value ? 'opacity-100' : 'opacity-0',
                       )}
                     />
                   </CommandItem>
@@ -516,7 +520,7 @@ const InputDropdown = React.forwardRef<HTMLDivElement, InputDropdownProps>(
         )}
       </Command>
     );
-  }
+  },
 );
 InputDropdown.displayName = 'InputDropdown';
 
@@ -538,7 +542,7 @@ const MultiDropdown = React.forwardRef<HTMLButtonElement, MultiDropdownProps>(
       showAddButton = false,
       label,
     },
-    ref
+    ref,
   ) => {
     const [open, setOpen] = React.useState(false);
     const [searchValue] = React.useState('');
@@ -547,7 +551,7 @@ const MultiDropdown = React.forwardRef<HTMLButtonElement, MultiDropdownProps>(
     const filteredData = React.useMemo(() => {
       if (!searchValue) return data;
       return data.filter((item) =>
-        item.label.toLowerCase().includes(searchValue.toLowerCase())
+        item.label.toLowerCase().includes(searchValue.toLowerCase()),
       );
     }, [data, searchValue]);
 
@@ -600,7 +604,7 @@ const MultiDropdown = React.forwardRef<HTMLButtonElement, MultiDropdownProps>(
                   size,
                   status: error ? 'error' : disabled ? 'disabled' : 'default',
                 }),
-                className
+                className,
               )}
             >
               <span className="flex-1 truncate text-start text-[13px] font-medium leading-[120%] text-gray-600">
@@ -610,7 +614,7 @@ const MultiDropdown = React.forwardRef<HTMLButtonElement, MultiDropdownProps>(
                 size={size === 'sm' ? 16 : size === 'base' ? 18 : 20}
                 className={cn(
                   'shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180',
-                  open && 'rotate-180'
+                  open && 'rotate-180',
                 )}
               />
             </Button>
@@ -623,12 +627,14 @@ const MultiDropdown = React.forwardRef<HTMLButtonElement, MultiDropdownProps>(
               status: error ? 'error' : 'default',
             }),
             'w-[var(--radix-popover-trigger-width)] overflow-hidden',
-            widthClassName
+            widthClassName,
           )}
         >
           <Command
             className={cn(
-              size === 'sm' || size === 'base' ? 'rounded-lg' : 'rounded-[10px]'
+              size === 'sm' || size === 'base'
+                ? 'rounded-lg'
+                : 'rounded-[10px]',
             )}
           >
             <div className="relative border-b border-gray-200">
@@ -670,7 +676,7 @@ const MultiDropdown = React.forwardRef<HTMLButtonElement, MultiDropdownProps>(
                         'relative flex h-9 w-full cursor-pointer items-center gap-2 p-3 text-sm font-medium leading-4 text-gray-500',
                         dropdownVariants.item({ size }),
                         isSelected &&
-                          'border-none bg-blue-50 text-blue-500 ring-0'
+                          'border-none bg-blue-50 text-blue-500 ring-0',
                       )}
                     >
                       <Checkbox checked={isSelected} />
@@ -702,7 +708,7 @@ const MultiDropdown = React.forwardRef<HTMLButtonElement, MultiDropdownProps>(
         </PopoverContent>
       </Popover>
     );
-  }
+  },
 );
 MultiDropdown.displayName = 'MultiDropdown';
 

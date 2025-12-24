@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
+import { type VariantProps, cva } from 'class-variance-authority';
+import * as React from 'react';
 
 const groupButtonItemVariants = cva(
   'flex items-center justify-center text-sm font-medium text-gray-700 hover:bg-gray-50 active:bg-gray-100 disabled:text-gray-700/40 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:active:bg-transparent',
@@ -16,7 +16,7 @@ const groupButtonItemVariants = cva(
     defaultVariants: {
       variant: 'default',
     },
-  }
+  },
 );
 
 export interface GroupButtonProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -29,7 +29,7 @@ const GroupButton = React.forwardRef<HTMLDivElement, GroupButtonProps>(
       <div
         className={cn(
           'flex items-center divide-x divide-gray-300 overflow-hidden rounded-lg border border-gray-300',
-          className
+          className,
         )}
         ref={ref}
         {...props}
@@ -37,7 +37,7 @@ const GroupButton = React.forwardRef<HTMLDivElement, GroupButtonProps>(
         {children}
       </div>
     );
-  }
+  },
 );
 GroupButton.displayName = 'GroupButton';
 

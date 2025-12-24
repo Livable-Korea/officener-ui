@@ -1,4 +1,4 @@
-import { render, screen, cleanup } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
 import { Heading } from '../src/components/ui/heading';
 
@@ -13,7 +13,7 @@ describe('Heading', () => {
         <Heading.Content>
           <Heading.Title>Test Title</Heading.Title>
         </Heading.Content>
-      </Heading.Root>
+      </Heading.Root>,
     );
 
     expect(screen.getByText('Test Title')).toBeInTheDocument();
@@ -28,7 +28,7 @@ describe('Heading', () => {
             <Heading.Tab state="inactive">Inactive Tab</Heading.Tab>
           </Heading.Tabs>
         </Heading.Content>
-      </Heading.Root>
+      </Heading.Root>,
     );
 
     const activeTab = screen.getByText('Active Tab');
@@ -56,7 +56,7 @@ describe('Heading', () => {
             </Heading.Tab>
           </Heading.Tabs>
         </Heading.Content>
-      </Heading.Root>
+      </Heading.Root>,
     );
 
     expect(screen.getByText('Link Tab')).toHaveAttribute('href', '/test');
@@ -71,7 +71,7 @@ describe('Heading', () => {
             <button type="button">Action Button</button>
           </Heading.Actions>
         </Heading.Content>
-      </Heading.Root>
+      </Heading.Root>,
     );
 
     expect(screen.getByText('Action Button')).toBeInTheDocument();
@@ -92,7 +92,7 @@ describe('Heading', () => {
         <Heading.Bottom>
           <span>Bottom Content</span>
         </Heading.Bottom>
-      </Heading.Root>
+      </Heading.Root>,
     );
 
     expect(screen.getByText('Breadcrumb Content')).toBeInTheDocument();
@@ -107,10 +107,12 @@ describe('Heading', () => {
         <Heading.Content>
           <Heading.Title>Custom Class Title</Heading.Title>
         </Heading.Content>
-      </Heading.Root>
+      </Heading.Root>,
     );
 
-    const root = screen.getByText('Custom Class Title').closest('.custom-class');
+    const root = screen
+      .getByText('Custom Class Title')
+      .closest('.custom-class');
     expect(root).toBeInTheDocument();
   });
 });

@@ -1,13 +1,13 @@
-import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
+import { MoreVertical } from 'lucide-react';
+import * as React from 'react';
+import { Button } from '../src/components/ui/button';
 import {
   Dropdown,
-  OptionDropdown,
   InputDropdown,
   MultiDropdown,
+  OptionDropdown,
 } from '../src/components/ui/dropdown';
-import { Button } from '../src/components/ui/button';
-import { MoreVertical } from 'lucide-react';
 
 // Sample data
 const sampleData = [
@@ -208,7 +208,11 @@ export const OptionDefault: Story = {
         data={[
           { label: '수정', onSelect: () => alert('수정') },
           { label: '복사', onSelect: () => alert('복사') },
-          { label: '삭제', onSelect: () => alert('삭제'), className: 'text-red-500' },
+          {
+            label: '삭제',
+            onSelect: () => alert('삭제'),
+            className: 'text-red-500',
+          },
         ]}
       >
         <Button variant="outline" size="icon">

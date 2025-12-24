@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
-import { X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { type VariantProps, cva } from 'class-variance-authority';
+import { X } from 'lucide-react';
+import type * as React from 'react';
 
 const badgeVariants = cva(
   'inline-flex justify-center w-fit py-0.5 items-center font-medium',
@@ -33,7 +33,7 @@ const badgeVariants = cva(
       size: 'sm',
       theme: 'gray',
     },
-  }
+  },
 );
 
 const dotVariants = cva('h-1.5 w-1.5 rounded-full mr-1.5', {
@@ -80,7 +80,7 @@ function Badge({
       className={cn(
         badgeVariants({ variant, size, theme }),
         (dot || removeButton) && 'px-2',
-        className
+        className,
       )}
       {...props}
     >

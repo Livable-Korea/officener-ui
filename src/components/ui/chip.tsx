@@ -1,6 +1,6 @@
-import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
-import { cva, type VariantProps } from 'class-variance-authority';
+import { type VariantProps, cva } from 'class-variance-authority';
+import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -29,7 +29,7 @@ const chipVariants = cva(
       theme: 'default',
       dashed: false,
     },
-  }
+  },
 );
 
 export interface ChipProps
@@ -41,8 +41,16 @@ export interface ChipProps
 
 const Chip = React.forwardRef<HTMLDivElement, ChipProps>(
   (
-    { className, size, theme, dashed, asChild = false, disabled = false, ...props },
-    ref
+    {
+      className,
+      size,
+      theme,
+      dashed,
+      asChild = false,
+      disabled = false,
+      ...props
+    },
+    ref,
   ) => {
     const Comp = asChild ? Slot : 'div';
     return (
@@ -50,13 +58,13 @@ const Chip = React.forwardRef<HTMLDivElement, ChipProps>(
         ref={ref}
         className={cn(
           chipVariants({ size, theme, dashed, className }),
-          disabled && 'pointer-events-none opacity-40'
+          disabled && 'pointer-events-none opacity-40',
         )}
         aria-disabled={disabled}
         {...props}
       />
     );
-  }
+  },
 );
 Chip.displayName = 'Chip';
 

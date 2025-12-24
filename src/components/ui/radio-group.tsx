@@ -1,7 +1,7 @@
-import * as React from 'react';
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
-import { cva, type VariantProps } from 'class-variance-authority';
+import { type VariantProps, cva } from 'class-variance-authority';
 import { Circle } from 'lucide-react';
+import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -25,7 +25,7 @@ const radioGroupItemVariants = cva(
       size: 'md',
       variant: 'default',
     },
-  }
+  },
 );
 
 const indicatorSizeVariants = cva('fill-white stroke-none', {
@@ -78,7 +78,7 @@ const RadioGroupItem = React.forwardRef<
       ref={ref}
       className={cn(
         radioGroupItemVariants({ size, variant: finalVariant }),
-        className
+        className,
       )}
       {...props}
     >

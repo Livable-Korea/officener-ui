@@ -1,15 +1,15 @@
 import React from 'react';
 import '../src/global.css';
-import type { Preview } from '@storybook/react';
 import {
-  Title,
-  Description,
-  Primary,
   Controls,
-  Stories,
+  Description,
   Markdown,
+  Primary,
+  Stories,
+  Title,
   useOf,
 } from '@storybook/blocks';
+import type { Preview } from '@storybook/react';
 
 const DocsPage = () => {
   const resolvedOf = useOf('meta');

@@ -1,6 +1,6 @@
-import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
-import { cva, type VariantProps } from 'class-variance-authority';
+import { type VariantProps, cva } from 'class-variance-authority';
+import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -20,7 +20,7 @@ const HeadingRoot = React.forwardRef<HTMLDivElement, HeadingRootProps>(
     >
       {children}
     </div>
-  )
+  ),
 );
 HeadingRoot.displayName = 'HeadingRoot';
 
@@ -59,7 +59,7 @@ const HeadingBadges = React.forwardRef<HTMLDivElement, HeadingBadgesProps>(
     >
       {children}
     </div>
-  )
+  ),
 );
 HeadingBadges.displayName = 'HeadingBadges';
 
@@ -80,7 +80,7 @@ const HeadingContent = React.forwardRef<HTMLDivElement, HeadingContentProps>(
     >
       {children}
     </div>
-  )
+  ),
 );
 HeadingContent.displayName = 'HeadingContent';
 
@@ -97,13 +97,13 @@ const HeadingTabs = React.forwardRef<HTMLDivElement, HeadingTabsProps>(
       ref={ref}
       className={cn(
         'flex items-center gap-6 text-2xl leading-9 font-semibold text-gray-900',
-        className
+        className,
       )}
       {...props}
     >
       {children}
     </div>
-  )
+  ),
 );
 HeadingTabs.displayName = 'HeadingTabs';
 
@@ -123,7 +123,7 @@ const headingTabVariants = cva(
     defaultVariants: {
       state: 'inactive',
     },
-  }
+  },
 );
 
 export interface HeadingTabProps
@@ -145,7 +145,7 @@ const HeadingTab = React.forwardRef<HTMLElement, HeadingTabProps>(
         {children}
       </Comp>
     );
-  }
+  },
 );
 HeadingTab.displayName = 'HeadingTab';
 
@@ -163,13 +163,13 @@ const HeadingTitle = React.forwardRef<HTMLHeadingElement, HeadingTitleProps>(
       ref={ref}
       className={cn(
         'text-2xl leading-9 font-semibold text-gray-900',
-        className
+        className,
       )}
       {...props}
     >
       {children}
     </h1>
-  )
+  ),
 );
 HeadingTitle.displayName = 'HeadingTitle';
 
@@ -190,7 +190,7 @@ const HeadingActions = React.forwardRef<HTMLDivElement, HeadingActionsProps>(
     >
       {children}
     </div>
-  )
+  ),
 );
 HeadingActions.displayName = 'HeadingActions';
 
@@ -207,7 +207,7 @@ const HeadingBottom = React.forwardRef<HTMLDivElement, HeadingBottomProps>(
     <div ref={ref} className={cn(className)} {...props}>
       {children}
     </div>
-  )
+  ),
 );
 HeadingBottom.displayName = 'HeadingBottom';
 

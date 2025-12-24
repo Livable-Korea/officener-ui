@@ -1,5 +1,5 @@
+import { type VariantProps, cva } from 'class-variance-authority';
 import * as React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '@/lib/utils';
 
@@ -26,7 +26,7 @@ const inputVariants = cva(
       size: 'sm',
       variant: 'default',
     },
-  }
+  },
 );
 
 export interface InputProps
@@ -52,7 +52,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       disabled,
       ...props
     },
-    ref
+    ref,
   ) => {
     const finalVariant = error ? 'error' : variant;
 
@@ -71,7 +71,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         className={cn(
           inputVariants({ size, variant: finalVariant }),
           disabled && 'cursor-not-allowed bg-gray-100 hover:border-gray-200',
-          className
+          className,
         )}
         onClick={handleContainerClick}
       >
@@ -85,7 +85,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           className={cn(
             'w-full bg-transparent placeholder:text-gray-400 focus:outline-none disabled:cursor-not-allowed',
             disabled && 'opacity-40',
-            inputClassName
+            inputClassName,
           )}
           ref={inputRef}
           disabled={disabled}
@@ -98,7 +98,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         )}
       </div>
     );
-  }
+  },
 );
 Input.displayName = 'Input';
 

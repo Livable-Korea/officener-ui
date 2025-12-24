@@ -8,6 +8,7 @@ Officener 서비스의 공용 디자인 컴포넌트 라이브러리입니다.
 > **Figma 디자인 시스템**: [🎨 디자인 시스템](https://www.figma.com/design/lHZdfoOBOLyYDtY3lFHpi6/%F0%9F%8E%A8-%EB%94%94%EC%9E%90%EC%9D%B8-%EC%8B%9C%EC%8A%A4%ED%85%9C?node-id=21-723&m=dev)
 
 컴포넌트 구현 시 위 피그마 파일의 디자인 스펙을 따릅니다.
+
 - 색상, 타이포그래피, 스페이싱 등 디자인 토큰
 - 각 컴포넌트의 variant, size, state 정의
 - 반응형 및 접근성 가이드라인
@@ -75,26 +76,23 @@ import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
-const buttonVariants = cva(
-  '기본 스타일 클래스들',
-  {
-    variants: {
-      variant: {
-        primary: 'bg-blue-600 text-white ...',
-        secondary: 'bg-white border ...',
-      },
-      size: {
-        sm: 'h-9 px-3 text-sm',
-        md: 'h-10 px-4',
-        lg: 'h-11 px-6 text-lg',
-      },
+const buttonVariants = cva('기본 스타일 클래스들', {
+  variants: {
+    variant: {
+      primary: 'bg-blue-600 text-white ...',
+      secondary: 'bg-white border ...',
     },
-    defaultVariants: {
-      variant: 'primary',
-      size: 'md',
+    size: {
+      sm: 'h-9 px-3 text-sm',
+      md: 'h-10 px-4',
+      lg: 'h-11 px-6 text-lg',
     },
   },
-);
+  defaultVariants: {
+    variant: 'primary',
+    size: 'md',
+  },
+});
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -176,22 +174,22 @@ export const Primary: Story = {
 
 ```tsx
 // tests/button.test.tsx
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { describe, expect, it, vi } from "vitest";
-import { Button } from "../src/components/button/button";
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { describe, expect, it, vi } from 'vitest';
+import { Button } from '../src/components/button/button';
 
-describe("Button", () => {
-  it("renders children correctly", () => {
+describe('Button', () => {
+  it('renders children correctly', () => {
     render(<Button>Click me</Button>);
-    expect(screen.getByText("Click me")).toBeInTheDocument();
+    expect(screen.getByText('Click me')).toBeInTheDocument();
   });
 
-  it("calls onClick when clicked", async () => {
+  it('calls onClick when clicked', async () => {
     const handleClick = vi.fn();
     render(<Button onClick={handleClick}>Click</Button>);
 
-    await userEvent.click(screen.getByRole("button"));
+    await userEvent.click(screen.getByRole('button'));
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 });
@@ -213,13 +211,18 @@ describe("Button", () => {
 import { Button, cn } from '@officener/ui';
 
 export default function MyPage() {
-  return <Button variant="primary" size="md">저장</Button>;
+  return (
+    <Button variant="primary" size="md">
+      저장
+    </Button>
+  );
 }
 ```
 
 > **참고**: 소비하는 프로젝트의 `tailwind.config`에 아래 경로 추가 필요:
+>
 > ```js
-> content: [
->   './node_modules/@officener/ui/dist/**/*.js',
-> ]
+> content: ['./node_modules/@officener/ui/dist/**/*.js'];
 > ```
+
+## 해당 프로젝트에서는 npm이 아닌 pnpm 으로 동작해줘

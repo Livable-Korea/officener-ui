@@ -112,3 +112,15 @@ export type {
   MultiDropdownProps,
   DropdownItem,
 } from '@/components/ui/dropdown';
+
+export {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+  TabsComponent,
+  tabsVariants,
+  tabsListVariants,
+  tabsTriggerVariants,
+} from '@/components/ui/tabs';
+export type { TabItem, TabsComponentProps } from '@/components/ui/tabs';

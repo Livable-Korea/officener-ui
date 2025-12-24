@@ -1,9 +1,9 @@
 'use client';
 
-import * as React from 'react';
+import { cn } from '@/lib/utils';
 import { Command as CommandPrimitive } from 'cmdk';
 import { SearchNormal1 } from 'iconsax-react';
-import { cn } from '@/lib/utils';
+import * as React from 'react';
 
 const Command = React.forwardRef<
   React.ComponentRef<typeof CommandPrimitive>,
@@ -13,7 +13,7 @@ const Command = React.forwardRef<
     ref={ref}
     className={cn(
       'flex h-full w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground',
-      className
+      className,
     )}
     {...props}
   />
@@ -36,7 +36,7 @@ const CommandInput = React.forwardRef<
       ref={ref}
       className={cn(
         'flex h-9 w-full rounded-md bg-transparent py-2 text-base leading-5 outline-none placeholder:text-gray-300 placeholder:text-muted-foreground placeholder:opacity-50 disabled:cursor-not-allowed disabled:opacity-50',
-        className
+        className,
       )}
       {...props}
     />
@@ -52,7 +52,7 @@ const CommandList = React.forwardRef<
     ref={ref}
     className={cn(
       'max-h-[300px] overflow-y-auto overflow-x-hidden border-t border-gray-200',
-      className
+      className,
     )}
     {...props}
   />
@@ -79,7 +79,7 @@ const CommandGroup = React.forwardRef<
     ref={ref}
     className={cn(
       'overflow-hidden p-1 text-foreground [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground',
-      className
+      className,
     )}
     {...props}
   />
@@ -106,7 +106,7 @@ const CommandItem = React.forwardRef<
     ref={ref}
     className={cn(
       'relative flex h-12 cursor-default select-none items-center gap-2 rounded-sm bg-white px-4 py-3 text-sm font-medium leading-5 text-gray-500 outline-none hover:bg-gray-50 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
-      className
+      className,
     )}
     {...props}
   />
@@ -121,7 +121,7 @@ const CommandShortcut = ({
     <span
       className={cn(
         'ml-auto text-xs tracking-widest text-muted-foreground',
-        className
+        className,
       )}
       {...props}
     />

@@ -1,5 +1,5 @@
+import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import * as React from 'react';
-import { render, screen, cleanup, fireEvent } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
 import { Input } from '../src/components/ui/input';
 
@@ -15,7 +15,7 @@ describe('Input', () => {
 
   it('applies size variants correctly', () => {
     const { container, rerender } = render(
-      <Input size="sm" placeholder="test" />
+      <Input size="sm" placeholder="test" />,
     );
     expect(container.firstChild).toHaveClass('h-9');
 
@@ -33,7 +33,7 @@ describe('Input', () => {
 
   it('applies success variant correctly', () => {
     const { container } = render(
-      <Input variant="success" placeholder="test" />
+      <Input variant="success" placeholder="test" />,
     );
     expect(container.firstChild).toHaveClass('border-green-500');
   });
@@ -43,7 +43,7 @@ describe('Input', () => {
       <Input
         leftElement={<span data-testid="left-icon">L</span>}
         placeholder="test"
-      />
+      />,
     );
     expect(screen.getByTestId('left-icon')).toBeInTheDocument();
   });
@@ -53,7 +53,7 @@ describe('Input', () => {
       <Input
         rightElement={<span data-testid="right-icon">R</span>}
         placeholder="test"
-      />
+      />,
     );
     expect(screen.getByTestId('right-icon')).toBeInTheDocument();
   });
@@ -73,7 +73,7 @@ describe('Input', () => {
 
   it('applies custom className to container', () => {
     const { container } = render(
-      <Input className="custom-class" placeholder="test" />
+      <Input className="custom-class" placeholder="test" />,
     );
     expect(container.firstChild).toHaveClass('custom-class');
   });
