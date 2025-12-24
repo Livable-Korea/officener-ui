@@ -131,3 +131,24 @@ export {
   toggleThumbVariants,
 } from '@/components/ui/toggle';
 export type { ToggleProps } from '@/components/ui/toggle';
+
+export {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationEllipsis,
+  PaginationComponent,
+  paginationItemVariants,
+} from '@/components/ui/pagination';
+export type {
+  PaginationProps,
+  PaginationContentProps,
+  PaginationItemProps,
+  PaginationLinkProps,
+  PaginationControlProps,
+  PaginationEllipsisProps,
+  PaginationComponentProps,
+} from '@/components/ui/pagination';
