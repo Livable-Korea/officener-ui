@@ -57,6 +57,7 @@ export type {
 } from '@/components/ui/breadcrumb';
 
 export {
+  Heading,
   HeadingRoot,
   HeadingBreadcrumb,
   HeadingBadges,
@@ -170,3 +171,16 @@ export type {
   StepsComponentProps,
   StepStatus,
 } from '@/components/ui/steps';
+
+export {
+  Calendar,
+  CalendarDayButton,
+  calendarVariants,
+} from '@/components/ui/calendar';
+export type {
+  CalendarProps,
+  CalendarDayButtonProps,
+} from '@/components/ui/calendar';
+
+export { DatePicker, datePickerVariants } from '@/components/ui/date-picker';
+export type { DatePickerProps } from '@/components/ui/date-picker';
