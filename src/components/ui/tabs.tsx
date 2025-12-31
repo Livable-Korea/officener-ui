@@ -25,9 +25,9 @@ const tabsTriggerVariants = cva(
     variants: {
       variant: {
         underline:
-          "border-b-2 border-transparent pb-3 px-1 data-[state=active]:border-gray-700",
+          "border-b-2 border-transparent pb-4 px-1 data-[state=active]:border-gray-700",
         pill: "rounded-md px-3 py-2 data-[state=active]:bg-white data-[state=active]:shadow-sm",
-        bar: "border-b-2 border-transparent pb-3 px-4 data-[state=active]:border-gray-700",
+        bar: "border-b-2 border-transparent pb-4 px-4 data-[state=active]:border-gray-700",
       },
       fullWidth: {
         true: "flex-1",
