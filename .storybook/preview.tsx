@@ -8,8 +8,8 @@ import {
   Stories,
   Title,
   useOf,
-} from '@storybook/blocks';
-import type { Preview } from '@storybook/react';
+} from '@storybook/addon-docs/blocks';
+import type { Preview } from 'storybook-react-rsbuild';
 
 const DocsPage = () => {
   const resolvedOf = useOf('meta');

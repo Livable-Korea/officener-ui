@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 import { Home, Settings, User } from 'lucide-react';
 import * as React from 'react';
 import { Badge } from '../src/components/ui/badge';

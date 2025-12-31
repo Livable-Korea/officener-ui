@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 import React from 'react';
 import { Checkbox } from '../src/components/ui/checkbox';
 

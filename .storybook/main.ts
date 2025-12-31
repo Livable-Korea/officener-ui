@@ -1,5 +1,9 @@
+// This file has been automatically migrated to valid ESM format by Storybook.
+import { createRequire } from "node:module";
 import { dirname, join } from 'node:path';
 import type { StorybookConfig } from 'storybook-react-rsbuild';
+
+const require = createRequire(import.meta.url);
 
 /**
  * This function is used to resolve the absolute path of a package.
@@ -16,26 +20,20 @@ const config: StorybookConfig = {
     '../stories/**/*.mdx',
     '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
-  addons: [
-    '@storybook/addon-onboarding',
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    {
-      name: getAbsolutePath('storybook-addon-rslib'),
-    },
-  ],
+
+  addons: ['@storybook/addon-onboarding', '@storybook/addon-links', {
+    name: getAbsolutePath('storybook-addon-rslib'),
+  }, getAbsolutePath("@storybook/addon-docs")],
+
   framework: {
     name: getAbsolutePath('storybook-react-rsbuild'),
     options: {},
   },
-  docs: {
-    autodocs: 'tag',
-  },
+
   typescript: {
     reactDocgen: 'react-docgen-typescript',
     check: true,
-  },
+  }
 };
 
 export default config;

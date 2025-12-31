@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 import * as React from 'react';
 import { Badge } from '../src/components/ui/badge';
 import {

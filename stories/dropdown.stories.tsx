@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 import { MoreVertical } from 'lucide-react';
 import * as React from 'react';
 import { Button } from '../src/components/ui/button';

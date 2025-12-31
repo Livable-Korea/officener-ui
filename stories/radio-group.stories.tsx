@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 import * as React from 'react';
 import { RadioGroup, RadioGroupItem } from '../src/components/ui/radio-group';
 

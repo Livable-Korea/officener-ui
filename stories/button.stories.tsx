@@ -1,14 +1,5 @@
-import {
-  Controls,
-  Description,
-  Markdown,
-  Primary,
-  Stories,
-  Title,
-} from '@storybook/blocks';
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
-import React from 'react';
+import type { Meta, StoryObj } from 'storybook-react-rsbuild';
+import { fn } from 'storybook/test';
 import { Button } from '../src/components/ui/button';
 
 const meta = {
