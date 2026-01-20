@@ -12,6 +12,9 @@ export default defineConfig({
       bundle: true,
       dts: true,
       format: 'esm',
+      banner: {
+        js: '"use client";',
+      },
     },
   ],
   output: {

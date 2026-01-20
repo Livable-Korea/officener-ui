@@ -1,5 +1,3 @@
-'use client';
-
 import { cn } from '@/lib/utils';
 import { Command as CommandPrimitive } from 'cmdk';
 import { SearchNormal1 } from 'iconsax-react';

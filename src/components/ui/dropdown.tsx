@@ -104,6 +104,7 @@ export interface DropdownProps {
   align?: "center" | "start" | "end";
   iconClassName?: string;
   modal?: boolean;
+  scrollToValue?: string;
 }
 
 export interface OptionDropdownProps extends PopoverContentProps {
@@ -169,20 +170,23 @@ const Dropdown = React.forwardRef<HTMLButtonElement, DropdownProps>(
       align,
       iconClassName,
       modal = true,
+      scrollToValue,
     },
     ref
   ) => {
     const [open, setOpen] = React.useState(false);
     const selectedRef = React.useRef<HTMLDivElement | null>(null);
+    const scrollTargetRef = React.useRef<HTMLDivElement | null>(null);
     const hasChildren = !!children;
 
     React.useEffect(() => {
       if (!open) return;
       const id = requestAnimationFrame(() => {
-        selectedRef.current?.scrollIntoView({ block: "start" });
+        const targetRef = scrollToValue ? scrollTargetRef : selectedRef;
+        targetRef.current?.scrollIntoView({ block: "start" });
       });
       return () => cancelAnimationFrame(id);
-    }, [open, value]);
+    }, [open, value, scrollToValue]);
 
     return (
       <Popover open={open} onOpenChange={setOpen} modal={modal}>
@@ -265,7 +269,13 @@ const Dropdown = React.forwardRef<HTMLButtonElement, DropdownProps>(
                   <CommandItem
                     key={item.value}
                     value={item.label}
-                    ref={item.value === value ? selectedRef : undefined}
+                    ref={
+                      scrollToValue && item.value === scrollToValue
+                        ? scrollTargetRef
+                        : item.value === value
+                        ? selectedRef
+                        : undefined
+                    }
                     onSelect={() => {
                       setValue(item.value);
                       setOpen(false);
@@ -301,7 +311,15 @@ Dropdown.displayName = "Dropdown";
 // OptionDropdown Component
 const OptionDropdown = React.forwardRef<HTMLButtonElement, OptionDropdownProps>(
   (
-    { children, size = "sm", data, isSearch = false, className, modal = true, ...props },
+    {
+      children,
+      size = "sm",
+      data,
+      isSearch = false,
+      className,
+      modal = true,
+      ...props
+    },
     ref
   ) => {
     const [open, setOpen] = React.useState(false);

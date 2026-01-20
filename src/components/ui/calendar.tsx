@@ -1,5 +1,3 @@
-"use client";
-
 import { cn } from "@/lib/utils";
 import { type VariantProps, cva } from "class-variance-authority";
 import { format } from "date-fns";
