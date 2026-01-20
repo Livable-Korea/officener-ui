@@ -103,6 +103,7 @@ export interface DropdownProps {
   subElement?: React.ReactNode;
   align?: "center" | "start" | "end";
   iconClassName?: string;
+  modal?: boolean;
 }
 
 export interface OptionDropdownProps extends PopoverContentProps {
@@ -115,6 +116,7 @@ export interface OptionDropdownProps extends PopoverContentProps {
   isSearch?: boolean;
   className?: string;
   children: React.ReactNode;
+  modal?: boolean;
 }
 
 export interface InputDropdownProps {
@@ -145,6 +147,7 @@ export interface MultiDropdownProps {
   onAddNew?: () => void;
   showAddButton?: boolean;
   label?: string;
+  modal?: boolean;
 }
 
 // Dropdown Component
@@ -165,6 +168,7 @@ const Dropdown = React.forwardRef<HTMLButtonElement, DropdownProps>(
       subElement,
       align,
       iconClassName,
+      modal = true,
     },
     ref
   ) => {
@@ -181,7 +185,7 @@ const Dropdown = React.forwardRef<HTMLButtonElement, DropdownProps>(
     }, [open, value]);
 
     return (
-      <Popover open={open} onOpenChange={setOpen}>
+      <Popover open={open} onOpenChange={setOpen} modal={modal}>
         <PopoverTrigger asChild data-state={open ? "open" : "closed"}>
           {hasChildren ? (
             typeof children === "function" ? (
@@ -297,13 +301,13 @@ Dropdown.displayName = "Dropdown";
 // OptionDropdown Component
 const OptionDropdown = React.forwardRef<HTMLButtonElement, OptionDropdownProps>(
   (
-    { children, size = "sm", data, isSearch = false, className, ...props },
+    { children, size = "sm", data, isSearch = false, className, modal = true, ...props },
     ref
   ) => {
     const [open, setOpen] = React.useState(false);
 
     return (
-      <Popover open={open} onOpenChange={setOpen}>
+      <Popover open={open} onOpenChange={setOpen} modal={modal}>
         <PopoverTrigger asChild ref={ref}>
           {children}
         </PopoverTrigger>
@@ -540,6 +544,7 @@ const MultiDropdown = React.forwardRef<HTMLButtonElement, MultiDropdownProps>(
       onAddNew,
       showAddButton = false,
       label,
+      modal = true,
     },
     ref
   ) => {
@@ -582,7 +587,7 @@ const MultiDropdown = React.forwardRef<HTMLButtonElement, MultiDropdownProps>(
     }, [hasSelectedItems, values.length, data.length, label, placeholder]);
 
     return (
-      <Popover open={open} onOpenChange={setOpen}>
+      <Popover open={open} onOpenChange={setOpen} modal={modal}>
         <PopoverTrigger asChild>
           {hasChildren ? (
             typeof children === "function" ? (

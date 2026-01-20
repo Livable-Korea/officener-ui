@@ -89,6 +89,19 @@ export {
 } from '@/components/ui/popover';
 
 export {
+  Dialog,
+  DialogPortal,
+  DialogOverlay,
+  DialogTrigger,
+  DialogClose,
+  DialogContent,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
+} from '@/components/ui/dialog';
+
+export {
   Command,
   CommandInput,
   CommandList,

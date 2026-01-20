@@ -16,6 +16,17 @@ export default defineConfig({
   ],
   output: {
     target: 'web',
+    externals: [
+      'react',
+      'react-dom',
+      'react/jsx-runtime',
+      'lucide-react',
+      'iconsax-react',
+      'class-variance-authority',
+      'clsx',
+      'tailwind-merge',
+      'date-fns',
+    ],
   },
   plugins: [pluginReact()],
 });
