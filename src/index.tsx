@@ -197,3 +197,18 @@ export type {
 
 export { DatePicker, datePickerVariants } from '@/components/ui/date-picker';
 export type { DatePickerProps } from '@/components/ui/date-picker';
+
+export {
+  Sheet,
+  SheetPortal,
+  SheetOverlay,
+  SheetTrigger,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetFooter,
+  SheetTitle,
+  SheetDescription,
+  sheetVariants,
+} from '@/components/ui/sheet';
+export type { SheetContentProps } from '@/components/ui/sheet';
