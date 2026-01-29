@@ -600,9 +600,14 @@ const MultiDropdown = React.forwardRef<HTMLButtonElement, MultiDropdownProps>(
       if (!hasSelectedItems) return placeholder;
       const isAllSelected = values.length === data.length && data.length > 0;
       if (isAllSelected && label) return `모든 ${label}`;
+      // 1개만 선택된 경우 해당 항목의 라벨 표시
+      if (values.length === 1) {
+        const selectedItem = data.find((item) => item.value === values[0]);
+        return selectedItem?.label ?? placeholder;
+      }
       if (label) return `${label} (${values.length}개 선택됨)`;
       return `${values.length}개 선택됨`;
-    }, [hasSelectedItems, values.length, data.length, label, placeholder]);
+    }, [hasSelectedItems, values.length, data, label, placeholder]);
 
     return (
       <Popover open={open} onOpenChange={setOpen} modal={modal}>

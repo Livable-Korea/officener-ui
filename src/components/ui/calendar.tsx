@@ -9,8 +9,8 @@ import {
 } from "lucide-react";
 import * as React from "react";
 import {
-  type DayButtonProps as RDPDayButtonProps,
   type DayPickerProps,
+  type DayButtonProps as RDPDayButtonProps,
   DayPicker,
   getDefaultClassNames,
 } from "react-day-picker";
@@ -92,17 +92,17 @@ function Calendar({
         ),
         month: cn("flex flex-col w-full gap-4", defaultClassNames.month),
         nav: cn(
-          "flex items-center gap-1 h-9 w-full absolute top-0 inset-x-0 justify-between z-0",
+          "flex items-center gap-1 h-9 w-full absolute top-0 inset-x-0 justify-between z-20 pointer-events-none",
           defaultClassNames.nav
         ),
         button_previous: cn(
           buttonVariants({ variant: "ghostGray" }),
-          "aria-disabled:opacity-50 p-2.5 select-none rounded-full",
+          "aria-disabled:opacity-50 p-2.5 select-none rounded-full pointer-events-auto",
           defaultClassNames.button_previous
         ),
         button_next: cn(
           buttonVariants({ variant: "ghostGray" }),
-          "aria-disabled:opacity-50 p-2.5 select-none rounded-full",
+          "aria-disabled:opacity-50 p-2.5 select-none rounded-full pointer-events-auto",
           defaultClassNames.button_next
         ),
         month_caption: cn(
