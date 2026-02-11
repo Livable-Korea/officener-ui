@@ -1,7 +1,7 @@
 import type { PopoverContentProps } from "@radix-ui/react-popover";
 import { cva } from "class-variance-authority";
 import { ArrowDown2, CloseCircle, SearchNormal1 } from "iconsax-react";
-import { Check, ChevronDown, Plus } from "lucide-react";
+import { Check, Plus } from "lucide-react";
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
@@ -105,6 +105,11 @@ export interface DropdownProps {
   iconClassName?: string;
   modal?: boolean;
   scrollToValue?: string;
+  commandFilter?: (
+    value: string,
+    search: string,
+    keywords?: string[]
+  ) => number;
 }
 
 export interface OptionDropdownProps extends PopoverContentProps {
@@ -171,6 +176,7 @@ const Dropdown = React.forwardRef<HTMLButtonElement, DropdownProps>(
       iconClassName,
       modal = true,
       scrollToValue,
+      commandFilter,
     },
     ref
   ) => {
@@ -246,6 +252,7 @@ const Dropdown = React.forwardRef<HTMLButtonElement, DropdownProps>(
           align={align}
         >
           <Command
+            filter={commandFilter}
             className={cn(
               size === "sm" || size === "base" ? "rounded-lg" : "rounded-[10px]"
             )}
@@ -637,8 +644,10 @@ const MultiDropdown = React.forwardRef<HTMLButtonElement, MultiDropdownProps>(
               <span className="flex-1 truncate text-start text-[13px] font-medium leading-[120%] text-gray-600">
                 {displayText}
               </span>
-              <ChevronDown
+              <ArrowDown2
                 size={size === "sm" ? 16 : size === "base" ? 18 : 20}
+                variant="Outline"
+                color="currentColor"
                 className={cn(
                   "shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180",
                   open && "rotate-180"
@@ -676,14 +685,14 @@ const MultiDropdown = React.forwardRef<HTMLButtonElement, MultiDropdownProps>(
                 onClick={handleSelectAll}
                 className="text-xs font-medium text-blue-400 hover:text-blue-500"
               >
-                전체 선택
+                전체선택
               </button>
               <button
                 type="button"
                 onClick={handleDeselectAll}
-                className="text-xs font-medium text-red-400 hover:text-red-500"
+                className="text-xs font-medium text-blue-400 hover:text-blue-500"
               >
-                전체 해제
+                초기화
               </button>
             </div>
 
@@ -739,8 +748,8 @@ MultiDropdown.displayName = "MultiDropdown";
 
 export {
   Dropdown,
-  OptionDropdown,
+  dropdownVariants,
   InputDropdown,
   MultiDropdown,
-  dropdownVariants,
+  OptionDropdown,
 };

@@ -240,6 +240,9 @@ function Calendar({
               placeholder="선택"
               size="sm"
               isSearch={true}
+              commandFilter={(value, search) =>
+                value.includes(search) ? 1 : 0
+              }
               align="start"
               className="z-10 flex w-[72px] items-center justify-between gap-1 rounded-lg py-2 pl-3 pr-2 text-[13px] leading-4 text-gray-700"
               widthClassName="w-40"
