@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { type VariantProps, cva } from "class-variance-authority";
+import { cva } from "class-variance-authority";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import {
@@ -52,8 +52,9 @@ const calendarVariants = {
   ),
 };
 
-export type CalendarProps = DayPickerProps &
-  VariantProps<typeof calendarVariants.root>;
+export type CalendarProps = DayPickerProps & {
+  size?: 'sm' | 'base' | 'md' | null;
+};
 
 function Calendar({
   className,

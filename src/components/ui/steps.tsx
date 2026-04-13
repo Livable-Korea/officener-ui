@@ -1,4 +1,4 @@
-import { type VariantProps, cva } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 import { Check } from 'lucide-react';
 import * as React from 'react';
 
@@ -69,8 +69,9 @@ export interface StepsProps extends React.ComponentProps<'div'> {
 }
 
 export interface StepItemProps
-  extends React.ComponentProps<'div'>,
-    VariantProps<typeof stepCircleVariants> {
+  extends React.ComponentProps<'div'> {
+  status?: 'incomplete' | 'current' | 'complete' | null;
+  size?: 'sm' | 'md' | null;
   /** 스텝 번호 (1부터 시작) */
   stepNumber?: number;
   /** 스텝 라벨 */
@@ -80,8 +81,10 @@ export interface StepItemProps
 }
 
 export interface StepConnectorProps
-  extends React.ComponentProps<'div'>,
-    VariantProps<typeof stepConnectorVariants> {}
+  extends React.ComponentProps<'div'> {
+  status?: 'incomplete' | 'complete' | null;
+  size?: 'sm' | 'md' | null;
+}
 
 // Components
 const Steps = React.forwardRef<HTMLDivElement, StepsProps>(

@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 import { Slot } from '@radix-ui/react-slot';
-import { type VariantProps, cva } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 import { Loader2 } from 'lucide-react';
 import * as React from 'react';
 
@@ -53,8 +53,9 @@ const spinnerSizeMap = {
 } as const;
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'primary' | 'secondaryBlue' | 'secondaryGray' | 'secondaryRed' | 'neutral' | 'accent' | 'warning' | 'error' | 'ghostBlue' | 'ghostGray' | 'ghostRed' | 'green' | null;
+  size?: 'sm' | 'base' | 'md' | 'lg' | 'icon' | null;
   asChild?: boolean;
   isLoading?: boolean;
 }

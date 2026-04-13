@@ -1,5 +1,5 @@
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
-import { type VariantProps, cva } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 import { Circle } from 'lucide-react';
 import * as React from 'react';
 
@@ -62,8 +62,9 @@ export interface RadioGroupItemProps
   extends Omit<
       React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>,
       'size'
-    >,
-    VariantProps<typeof radioGroupItemVariants> {
+    > {
+  size?: 'md' | 'lg' | 'xl' | null;
+  variant?: 'default' | 'error' | null;
   error?: boolean;
 }
 

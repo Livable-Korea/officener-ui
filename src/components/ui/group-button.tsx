@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import { type VariantProps, cva } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 import * as React from 'react';
 
 const groupButtonItemVariants = cva(
@@ -42,8 +42,8 @@ const GroupButton = React.forwardRef<HTMLDivElement, GroupButtonProps>(
 GroupButton.displayName = 'GroupButton';
 
 export interface GroupButtonItemProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof groupButtonItemVariants> {
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'default' | 'icon' | 'leadingIcon' | 'trailingIcon' | null;
   children: React.ReactNode;
 }
 

@@ -1,5 +1,5 @@
 import { Slot } from '@radix-ui/react-slot';
-import { type VariantProps, cva } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react';
 import * as React from 'react';
 
@@ -35,21 +35,23 @@ export interface PaginationContentProps extends React.ComponentProps<'ul'> {}
 export interface PaginationItemProps extends React.ComponentProps<'li'> {}
 
 export interface PaginationLinkProps
-  extends React.ComponentProps<'button'>,
-    VariantProps<typeof paginationItemVariants> {
+  extends React.ComponentProps<'button'> {
+  variant?: 'default' | 'circle' | null;
+  state?: 'default' | 'active' | 'disabled' | null;
   isActive?: boolean;
   asChild?: boolean;
 }
 
 export interface PaginationControlProps
-  extends React.ComponentProps<'button'>,
-    Omit<VariantProps<typeof paginationItemVariants>, 'state'> {
+  extends React.ComponentProps<'button'> {
+  variant?: 'default' | 'circle' | null;
   asChild?: boolean;
 }
 
 export interface PaginationEllipsisProps
-  extends React.ComponentProps<'span'>,
-    Omit<VariantProps<typeof paginationItemVariants>, 'state'> {}
+  extends React.ComponentProps<'span'> {
+  variant?: 'default' | 'circle' | null;
+}
 
 // Components
 const Pagination = React.forwardRef<HTMLElement, PaginationProps>(

@@ -1,5 +1,5 @@
 import { Slot } from "@radix-ui/react-slot";
-import { type VariantProps, cva } from "class-variance-authority";
+import { cva } from "class-variance-authority";
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
@@ -127,8 +127,8 @@ const headingTabVariants = cva(
 );
 
 export interface HeadingTabProps
-  extends React.HTMLAttributes<HTMLElement>,
-    VariantProps<typeof headingTabVariants> {
+  extends React.HTMLAttributes<HTMLElement> {
+  state?: 'active' | 'inactive' | 'static' | null;
   asChild?: boolean;
   children: React.ReactNode;
 }
