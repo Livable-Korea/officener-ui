@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import { type VariantProps, cva } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 import { X } from 'lucide-react';
 import type * as React from 'react';
 
@@ -57,8 +57,10 @@ const dotVariants = cva('h-1.5 w-1.5 rounded-full mr-1.5', {
 });
 
 export interface BadgeProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeVariants> {
+  extends React.HTMLAttributes<HTMLDivElement> {
+  variant?: 'basic' | 'rounded' | null;
+  size?: 'sm' | 'lg' | null;
+  theme?: 'gray' | 'red' | 'yellow' | 'green' | 'blue' | 'indigo' | 'purple' | 'pink' | 'orange' | 'lime' | null;
   dot?: boolean;
   removeButton?: boolean;
   onRemove?: () => void;

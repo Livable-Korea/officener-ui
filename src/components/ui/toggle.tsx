@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 import * as SwitchPrimitives from '@radix-ui/react-switch';
-import { type VariantProps, cva } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 import * as React from 'react';
 
 // CVA Variants
@@ -45,8 +45,10 @@ export interface ToggleProps
   extends Omit<
       React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>,
       'size' | 'color'
-    >,
-    VariantProps<typeof toggleVariants> {}
+    > {
+  color?: 'blue' | 'green' | 'black' | null;
+  size?: '20' | '24' | null;
+}
 
 // Component
 const Toggle = React.forwardRef<

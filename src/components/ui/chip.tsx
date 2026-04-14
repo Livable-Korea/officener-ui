@@ -1,5 +1,5 @@
 import { Slot } from '@radix-ui/react-slot';
-import { type VariantProps, cva } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';
@@ -33,8 +33,10 @@ const chipVariants = cva(
 );
 
 export interface ChipProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof chipVariants> {
+  extends React.HTMLAttributes<HTMLDivElement> {
+  size?: 'sm' | 'md' | null;
+  theme?: 'default' | 'orange' | 'indigo' | 'blue' | 'green' | null;
+  dashed?: boolean | null;
   asChild?: boolean;
   disabled?: boolean;
 }
