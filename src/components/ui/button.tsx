@@ -54,7 +54,20 @@ const spinnerSizeMap = {
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondaryBlue' | 'secondaryGray' | 'secondaryRed' | 'neutral' | 'accent' | 'warning' | 'error' | 'ghostBlue' | 'ghostGray' | 'ghostRed' | 'green' | null;
+  variant?:
+    | 'primary'
+    | 'secondaryBlue'
+    | 'secondaryGray'
+    | 'secondaryRed'
+    | 'neutral'
+    | 'accent'
+    | 'warning'
+    | 'error'
+    | 'ghostBlue'
+    | 'ghostGray'
+    | 'ghostRed'
+    | 'green'
+    | null;
   size?: 'sm' | 'base' | 'md' | 'lg' | 'icon' | null;
   asChild?: boolean;
   isLoading?: boolean;

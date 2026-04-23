@@ -1,12 +1,12 @@
-import * as React from "react";
-import { Button, type ButtonProps } from "./button";
+import * as React from 'react';
+import { Button, type ButtonProps } from './button';
 import {
   Dialog,
   DialogClose,
   DialogContent,
   DialogDescription,
   DialogTitle,
-} from "./dialog";
+} from './dialog';
 
 export interface AlertDialogProps {
   /** Dialog 열림 상태 */
@@ -22,13 +22,13 @@ export interface AlertDialogProps {
   /** 커스텀 아이콘 엘리먼트 */
   iconElement?: React.ReactNode;
   /** 버튼 레이아웃 타입 */
-  buttonType?: "default" | "wide";
+  buttonType?: 'default' | 'wide';
   /** 확인 버튼 텍스트 */
   buttonText?: string;
   /** 확인 버튼 클릭 핸들러 */
   onClick?: () => void | Promise<void>;
   /** 확인 버튼 variant */
-  buttonVariant?: ButtonProps["variant"];
+  buttonVariant?: ButtonProps['variant'];
   /** 취소 버튼 텍스트 */
   subButtonText?: string;
   /** 취소 버튼 클릭 핸들러 */
@@ -62,7 +62,7 @@ export const AlertDialog = React.forwardRef<HTMLDivElement, AlertDialogProps>(
       description,
       isShowIcon = true,
       iconElement,
-      buttonType = "default",
+      buttonType = 'default',
       buttonText,
       onClick,
       buttonVariant,
@@ -98,11 +98,11 @@ export const AlertDialog = React.forwardRef<HTMLDivElement, AlertDialogProps>(
           <DialogClose asChild>
             <Button
               size="md"
-              variant={buttonVariant || "neutral"}
+              variant={buttonVariant || 'neutral'}
               className="w-full"
               onClick={onClick}
             >
-              {buttonText || "확인"}
+              {buttonText || '확인'}
             </Button>
           </DialogClose>
         </div>
@@ -116,17 +116,17 @@ export const AlertDialog = React.forwardRef<HTMLDivElement, AlertDialogProps>(
               className="flex-1"
               onClick={onSubButtonClick}
             >
-              {subButtonText || "취소"}
+              {subButtonText || '취소'}
             </Button>
           </DialogClose>
           <DialogClose asChild>
             <Button
               size="md"
-              variant={buttonVariant || "primary"}
+              variant={buttonVariant || 'primary'}
               className="flex-1"
               onClick={onClick}
             >
-              {buttonText || "확인"}
+              {buttonText || '확인'}
             </Button>
           </DialogClose>
         </div>
@@ -161,4 +161,4 @@ export const AlertDialog = React.forwardRef<HTMLDivElement, AlertDialogProps>(
   },
 );
 
-AlertDialog.displayName = "AlertDialog";
+AlertDialog.displayName = 'AlertDialog';

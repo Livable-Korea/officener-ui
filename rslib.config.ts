@@ -27,6 +27,13 @@ export default defineConfig({
       calendar: './src/components/ui/calendar.tsx',
       'date-picker': './src/components/ui/date-picker.tsx',
       sheet: './src/components/ui/sheet.tsx',
+      separator: './src/components/ui/separator.tsx',
+      accordion: './src/components/ui/accordion.tsx',
+      skeleton: './src/components/ui/skeleton.tsx',
+      table: './src/components/ui/table.tsx',
+      textarea: './src/components/ui/textarea.tsx',
+      tooltip: './src/components/ui/tooltip.tsx',
+      'scroll-area': './src/components/ui/scroll-area.tsx',
     },
   },
   lib: [

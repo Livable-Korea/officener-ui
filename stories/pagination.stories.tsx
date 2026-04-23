@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 import * as React from 'react';
+import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 import {
   Pagination,
   PaginationComponent,
@@ -174,7 +174,9 @@ export const CustomPageSize: Story = {
 
     return (
       <div className="flex flex-col items-center gap-4">
-        <p className="text-sm text-gray-500">pageSize=20 (100개 / 20 = 5페이지)</p>
+        <p className="text-sm text-gray-500">
+          pageSize=20 (100개 / 20 = 5페이지)
+        </p>
         <PaginationComponent
           totalCount={100}
           currentPage={currentPage}

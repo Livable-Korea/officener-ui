@@ -43,9 +43,9 @@ const toggleThumbVariants = cva(
 // Types
 export interface ToggleProps
   extends Omit<
-      React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>,
-      'size' | 'color'
-    > {
+    React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>,
+    'size' | 'color'
+  > {
   color?: 'blue' | 'green' | 'black' | null;
   size?: '20' | '24' | null;
 }

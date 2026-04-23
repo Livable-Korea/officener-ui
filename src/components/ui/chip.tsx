@@ -32,8 +32,7 @@ const chipVariants = cva(
   },
 );
 
-export interface ChipProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface ChipProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: 'sm' | 'md' | null;
   theme?: 'default' | 'orange' | 'indigo' | 'blue' | 'green' | null;
   dashed?: boolean | null;

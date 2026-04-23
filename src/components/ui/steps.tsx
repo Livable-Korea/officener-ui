@@ -68,8 +68,7 @@ export interface StepsProps extends React.ComponentProps<'div'> {
   size?: 'sm' | 'md';
 }
 
-export interface StepItemProps
-  extends React.ComponentProps<'div'> {
+export interface StepItemProps extends React.ComponentProps<'div'> {
   status?: 'incomplete' | 'current' | 'complete' | null;
   size?: 'sm' | 'md' | null;
   /** 스텝 번호 (1부터 시작) */
@@ -80,8 +79,7 @@ export interface StepItemProps
   showIcon?: boolean;
 }
 
-export interface StepConnectorProps
-  extends React.ComponentProps<'div'> {
+export interface StepConnectorProps extends React.ComponentProps<'div'> {
   status?: 'incomplete' | 'complete' | null;
   size?: 'sm' | 'md' | null;
 }
@@ -133,13 +131,13 @@ const StepItem = React.forwardRef<HTMLDivElement, StepItemProps>(
           {status === 'complete' && showIcon ? (
             <Check className={size === 'sm' ? 'h-2.5 w-2.5' : 'h-3.5 w-3.5'} />
           ) : (
-            stepNumber && (
-              <span>{stepNumber}</span>
-            )
+            stepNumber && <span>{stepNumber}</span>
           )}
         </div>
         {label && (
-          <span className={cn(stepLabelVariants({ status, size }))}>{label}</span>
+          <span className={cn(stepLabelVariants({ status, size }))}>
+            {label}
+          </span>
         )}
       </div>
     );
@@ -196,9 +194,7 @@ const StepsComponent = ({
     return 'incomplete';
   };
 
-  const getConnectorStatus = (
-    index: number,
-  ): 'complete' | 'incomplete' => {
+  const getConnectorStatus = (index: number): 'complete' | 'incomplete' => {
     return index + 1 < currentStep ? 'complete' : 'incomplete';
   };
 

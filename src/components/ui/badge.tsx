@@ -56,11 +56,21 @@ const dotVariants = cva('h-1.5 w-1.5 rounded-full mr-1.5', {
   },
 });
 
-export interface BadgeProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: 'basic' | 'rounded' | null;
   size?: 'sm' | 'lg' | null;
-  theme?: 'gray' | 'red' | 'yellow' | 'green' | 'blue' | 'indigo' | 'purple' | 'pink' | 'orange' | 'lime' | null;
+  theme?:
+    | 'gray'
+    | 'red'
+    | 'yellow'
+    | 'green'
+    | 'blue'
+    | 'indigo'
+    | 'purple'
+    | 'pink'
+    | 'orange'
+    | 'lime'
+    | null;
   dot?: boolean;
   removeButton?: boolean;
   onRemove?: () => void;

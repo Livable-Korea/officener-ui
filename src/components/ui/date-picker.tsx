@@ -1,86 +1,86 @@
-import { cn } from "@/lib/utils";
-import { cva } from "class-variance-authority";
-import { add, format } from "date-fns";
-import { ko } from "date-fns/locale";
-import * as React from "react";
-import type { DateRange, Formatters } from "react-day-picker";
-import type { Locale } from "date-fns";
-import { Calendar } from "./calendar";
-import { Popover, PopoverContent, PopoverTrigger } from "./popover";
-import { ArrowDown2, CloseCircle, SearchNormal1 } from "iconsax-react";
+import { cn } from '@/lib/utils';
+import { cva } from 'class-variance-authority';
+import { add, format } from 'date-fns';
+import type { Locale } from 'date-fns';
+import { ko } from 'date-fns/locale';
+import { ArrowDown2, CloseCircle, SearchNormal1 } from 'iconsax-react';
+import * as React from 'react';
+import type { DateRange, Formatters } from 'react-day-picker';
+import { Calendar } from './calendar';
+import { Popover, PopoverContent, PopoverTrigger } from './popover';
 
 const datePickerVariants = {
   trigger: cva(
-    "flex w-full cursor-pointer items-center justify-start gap-2 border text-left font-medium text-gray-700 disabled:cursor-not-allowed disabled:opacity-50 data-[state=open]:bg-gray-50 data-[state=open]:ring-2 data-[state=open]:ring-gray-600/10",
+    'flex w-full cursor-pointer items-center justify-start gap-2 border text-left font-medium text-gray-700 disabled:cursor-not-allowed disabled:opacity-50 data-[state=open]:bg-gray-50 data-[state=open]:ring-2 data-[state=open]:ring-gray-600/10',
     {
       variants: {
         size: {
-          sm: "h-9 rounded-lg px-3 text-[13px] leading-4",
-          base: "h-10 rounded-lg px-3.5 text-sm leading-5",
-          md: "h-12 rounded-[10px] px-4 text-base leading-5",
+          sm: 'h-9 rounded-lg px-3 text-[13px] leading-4',
+          base: 'h-10 rounded-lg px-3.5 text-sm leading-5',
+          md: 'h-12 rounded-[10px] px-4 text-base leading-5',
         },
         status: {
-          default: "border-gray-300",
-          error: "border-red-500 ring-red-500/20",
-          disabled: "border-gray-200 bg-gray-100",
+          default: 'border-gray-300',
+          error: 'border-red-500 ring-red-500/20',
+          disabled: 'border-gray-200 bg-gray-100',
         },
       },
       defaultVariants: {
-        size: "sm",
-        status: "default",
+        size: 'sm',
+        status: 'default',
       },
-    }
+    },
   ),
-  content: cva("flex w-auto flex-col overflow-hidden p-0", {
+  content: cva('flex w-auto flex-col overflow-hidden p-0', {
     variants: {
       size: {
-        sm: "rounded-lg",
-        base: "rounded-lg",
-        md: "rounded-[10px]",
+        sm: 'rounded-lg',
+        base: 'rounded-lg',
+        md: 'rounded-[10px]',
       },
     },
     defaultVariants: {
-      size: "sm",
+      size: 'sm',
     },
   }),
   timePanel: cva(
-    "flex flex-col items-center gap-3 overflow-y-auto overflow-x-hidden border-l border-gray-200 px-3 pb-4",
+    'flex flex-col items-center gap-3 overflow-y-auto overflow-x-hidden border-l border-gray-200 px-3 pb-4',
     {
       variants: {
         size: {
-          sm: "h-[280px] w-[100px]",
-          base: "h-[290px] w-[105px]",
-          md: "h-[300px] w-[110px]",
+          sm: 'h-[280px] w-[100px]',
+          base: 'h-[290px] w-[105px]',
+          md: 'h-[300px] w-[110px]',
         },
       },
       defaultVariants: {
-        size: "sm",
+        size: 'sm',
       },
-    }
+    },
   ),
   timeSlot: cva(
-    "w-full cursor-pointer rounded-lg px-3 text-center font-normal text-gray-900 disabled:cursor-not-allowed disabled:opacity-50",
+    'w-full cursor-pointer rounded-lg px-3 text-center font-normal text-gray-900 disabled:cursor-not-allowed disabled:opacity-50',
     {
       variants: {
         size: {
-          sm: "h-8 text-[13px]",
-          base: "h-9 text-sm",
-          md: "h-9 text-base",
+          sm: 'h-8 text-[13px]',
+          base: 'h-9 text-sm',
+          md: 'h-9 text-base',
         },
         selected: {
-          true: "bg-blue-400 text-white",
-          false: "",
+          true: 'bg-blue-400 text-white',
+          false: '',
         },
       },
       defaultVariants: {
-        size: "sm",
+        size: 'sm',
         selected: false,
       },
-    }
+    },
   ),
 };
 
-type TimeType = "none" | "panel" | "input";
+type TimeType = 'none' | 'panel' | 'input';
 
 interface DatePickerBaseProps {
   size?: 'sm' | 'base' | 'md' | null;
@@ -102,13 +102,13 @@ interface DatePickerBaseProps {
 }
 
 interface DatePickerSingleProps extends DatePickerBaseProps {
-  mode: "single";
+  mode: 'single';
   value: Date | undefined;
   onChange: (date: Date | undefined) => void;
 }
 
 interface DatePickerRangeProps extends DatePickerBaseProps {
-  mode: "range";
+  mode: 'range';
   value: DateRange | undefined;
   onChange: (range: DateRange | undefined) => void;
   onReset?: () => void;
@@ -119,10 +119,10 @@ export type DatePickerProps = DatePickerSingleProps | DatePickerRangeProps;
 function DatePicker(props: DatePickerProps) {
   const {
     mode,
-    placeholder = "날짜 선택",
+    placeholder = '날짜 선택',
     disabled = false,
     disabledDate,
-    timeType = "none",
+    timeType = 'none',
     formatString,
     className,
     showArrow = true,
@@ -132,7 +132,7 @@ function DatePicker(props: DatePickerProps) {
     open,
     onOpenChange,
     error = false,
-    size = "sm",
+    size = 'sm',
     children,
   } = props;
 
@@ -140,13 +140,13 @@ function DatePicker(props: DatePickerProps) {
 
   const defaultFormatString = React.useMemo(() => {
     if (formatString) return formatString;
-    if (timeType === "none") return "yyyy.MM.dd";
-    return "yyyy.MM.dd HH:mm";
+    if (timeType === 'none') return 'yyyy.MM.dd';
+    return 'yyyy.MM.dd HH:mm';
   }, [formatString, timeType]);
 
   const handleOpenChange = React.useCallback(
     (isOpen: boolean) => {
-      if (isOpen && mode === "single" && props.value && timeType === "panel") {
+      if (isOpen && mode === 'single' && props.value && timeType === 'panel') {
         requestAnimationFrame(() => {
           const hours = props.value?.getHours() ?? 0;
           const minutes = props.value?.getMinutes() ?? 0;
@@ -155,16 +155,16 @@ function DatePicker(props: DatePickerProps) {
         });
       }
 
-      if (!isOpen && mode === "range" && props.onReset) {
+      if (!isOpen && mode === 'range' && props.onReset) {
         props.onReset();
       }
 
       onOpenChange?.(isOpen);
     },
-    [mode, props, timeType, onOpenChange]
+    [mode, props, timeType, onOpenChange],
   );
 
-  if (mode === "single") {
+  if (mode === 'single') {
     return (
       <SingleDatePicker
         {...props}
@@ -244,7 +244,7 @@ function SingleDatePicker({
       const newDateFull = add(value, { days: Math.ceil(diffInDays) });
       onChange(newDateFull);
     },
-    [value, onChange]
+    [value, onChange],
   );
 
   const handleTimeSelect = React.useCallback(
@@ -256,7 +256,7 @@ function SingleDatePicker({
       newDate.setHours(hours, minutes, 0, 0);
       onChange(newDate);
     },
-    [value, onChange]
+    [value, onChange],
   );
 
   const isTimeSlotDisabled = React.useCallback(
@@ -273,7 +273,7 @@ function SingleDatePicker({
         (hours === now.getHours() && minutes < now.getMinutes())
       );
     },
-    [value]
+    [value],
   );
 
   const isTimeSlotSelected = React.useCallback(
@@ -283,7 +283,7 @@ function SingleDatePicker({
       const minutes = (index % 6) * 10;
       return value.getHours() === hours && value.getMinutes() === minutes;
     },
-    [value]
+    [value],
   );
 
   return (
@@ -296,24 +296,24 @@ function SingleDatePicker({
             className={cn(
               datePickerVariants.trigger({
                 size,
-                status: error ? "error" : disabled ? "disabled" : "default",
+                status: error ? 'error' : disabled ? 'disabled' : 'default',
               }),
-              !value && "text-gray-400",
-              className
+              !value && 'text-gray-400',
+              className,
             )}
           >
             {value ? (
-              format(value, formatString ?? "yyyy.MM.dd", { locale })
+              format(value, formatString ?? 'yyyy.MM.dd', { locale })
             ) : (
               <span>{placeholder}</span>
             )}
             {showArrow && (
               <ArrowDown2
-                size={size === "sm" ? 16 : 20}
+                size={size === 'sm' ? 16 : 20}
                 variant="Outline"
                 color="currentColor"
                 className={cn(
-                  "ml-auto text-gray-500 transition-transform duration-200 group-data-[state=open]:rotate-180"
+                  'ml-auto text-gray-500 transition-transform duration-200 group-data-[state=open]:rotate-180',
                 )}
               />
             )}
@@ -332,7 +332,7 @@ function SingleDatePicker({
             formatters={formatters}
             size={size}
           />
-          {timeType === "panel" && (
+          {timeType === 'panel' && (
             <div
               ref={scrollRef}
               className={cn(datePickerVariants.timePanel({ size }))}
@@ -355,12 +355,12 @@ function SingleDatePicker({
                         datePickerVariants.timeSlot({
                           size,
                           selected: isTimeSlotSelected(i),
-                        })
+                        }),
                       )}
                       onClick={() => handleTimeSelect(i)}
                     >
-                      {hours.toString().padStart(2, "0")}:
-                      {minutes === 0 ? "00" : minutes}
+                      {hours.toString().padStart(2, '0')}:
+                      {minutes === 0 ? '00' : minutes}
                     </button>
                   );
                 })}
@@ -375,7 +375,7 @@ function SingleDatePicker({
 }
 
 interface RangeDatePickerInternalProps
-  extends Omit<DatePickerRangeProps, "timeType" | "bottomElement"> {}
+  extends Omit<DatePickerRangeProps, 'timeType' | 'bottomElement'> {}
 
 function RangeDatePicker({
   value,
@@ -444,7 +444,7 @@ function RangeDatePicker({
         onChange({ from, to });
       }
     },
-    [value, onChange]
+    [value, onChange],
   );
 
   const displayText = React.useMemo(() => {
@@ -452,10 +452,10 @@ function RangeDatePicker({
       return null;
     }
     const fromText = value?.from
-      ? format(value.from, formatString ?? "yyyy.MM.dd", { locale })
+      ? format(value.from, formatString ?? 'yyyy.MM.dd', { locale })
       : `시작${placeholder}`;
     const toText = value?.to
-      ? format(value.to, formatString ?? "yyyy.MM.dd", { locale })
+      ? format(value.to, formatString ?? 'yyyy.MM.dd', { locale })
       : `종료${placeholder}`;
     return `${fromText} - ${toText}`;
   }, [value, formatString, locale, placeholder]);
@@ -470,20 +470,20 @@ function RangeDatePicker({
             className={cn(
               datePickerVariants.trigger({
                 size,
-                status: error ? "error" : disabled ? "disabled" : "default",
+                status: error ? 'error' : disabled ? 'disabled' : 'default',
               }),
-              !value?.from && !value?.to && "text-gray-400",
-              className
+              !value?.from && !value?.to && 'text-gray-400',
+              className,
             )}
           >
             {displayText || <span>{placeholder}</span>}
             {showArrow && (
               <ArrowDown2
-                size={size === "sm" ? 16 : 20}
+                size={size === 'sm' ? 16 : 20}
                 variant="Outline"
                 color="currentColor"
                 className={cn(
-                  "ml-auto text-gray-500 transition-transform duration-200 group-data-[state=open]:rotate-180"
+                  'ml-auto text-gray-500 transition-transform duration-200 group-data-[state=open]:rotate-180',
                 )}
               />
             )}
@@ -506,6 +506,6 @@ function RangeDatePicker({
   );
 }
 
-DatePicker.displayName = "DatePicker";
+DatePicker.displayName = 'DatePicker';
 
 export { DatePicker, datePickerVariants };

@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 import { Eye, EyeOff, Search, X } from 'lucide-react';
 import * as React from 'react';
+import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 import { Input } from '../src/components/ui/input';
 
 const meta = {

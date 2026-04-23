@@ -1,59 +1,59 @@
-import * as React from "react";
-import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { AlertDialog } from "../src/components/ui/alert-dialog";
-import { Button } from "../src/components/ui/button";
+import * as React from 'react';
+import type { Meta, StoryObj } from 'storybook-react-rsbuild';
+import { AlertDialog } from '../src/components/ui/alert-dialog';
+import { Button } from '../src/components/ui/button';
 
 const meta = {
-  title: "Components/AlertDialog",
+  title: 'Components/AlertDialog',
   component: AlertDialog,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   argTypes: {
     buttonType: {
-      control: "select",
-      options: ["default", "wide"],
+      control: 'select',
+      options: ['default', 'wide'],
     },
     buttonVariant: {
-      control: "select",
+      control: 'select',
       options: [
-        "primary",
-        "error",
-        "warning",
-        "neutral",
-        "accent",
-        "secondaryBlue",
-        "secondaryGray",
-        "secondaryRed",
-        "ghostBlue",
-        "ghostGray",
-        "ghostRed",
-        "green",
+        'primary',
+        'error',
+        'warning',
+        'neutral',
+        'accent',
+        'secondaryBlue',
+        'secondaryGray',
+        'secondaryRed',
+        'ghostBlue',
+        'ghostGray',
+        'ghostRed',
+        'green',
       ],
     },
     isShowIcon: {
-      control: "boolean",
+      control: 'boolean',
     },
     title: {
-      control: "text",
+      control: 'text',
     },
     description: {
-      control: "text",
+      control: 'text',
     },
     buttonText: {
-      control: "text",
+      control: 'text',
     },
     subButtonText: {
-      control: "text",
+      control: 'text',
     },
   },
   args: {
     isOpen: false, // render 함수에서 덮어씀 (타입 오류 방지용)
     onOpenChange: () => {},
-    title: "알림",
-    description: "기본 알림 다이얼로그입니다.",
-    buttonText: "확인",
+    title: '알림',
+    description: '기본 알림 다이얼로그입니다.',
+    buttonText: '확인',
   },
 } satisfies Meta<typeof AlertDialog>;
 
@@ -66,9 +66,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    title: "알림",
-    description: "기본 알림 다이얼로그입니다.",
-    buttonText: "확인",
+    title: '알림',
+    description: '기본 알림 다이얼로그입니다.',
+    buttonText: '확인',
   },
   render: (args) => {
     const [isOpen, setIsOpen] = React.useState(false);

@@ -94,83 +94,72 @@
     "./sheet": {
       "types": "./dist/components/ui/sheet.d.ts",
       "import": "./dist/sheet.js"
+    },
+    "./separator": {
+      "types": "./dist/components/ui/separator.d.ts",
+      "import": "./dist/separator.js"
+    },
+    "./accordion": {
+      "types": "./dist/components/ui/accordion.d.ts",
+      "import": "./dist/accordion.js"
+    },
+    "./skeleton": {
+      "types": "./dist/components/ui/skeleton.d.ts",
+      "import": "./dist/skeleton.js"
+    },
+    "./table": {
+      "types": "./dist/components/ui/table.d.ts",
+      "import": "./dist/table.js"
+    },
+    "./textarea": {
+      "types": "./dist/components/ui/textarea.d.ts",
+      "import": "./dist/textarea.js"
+    },
+    "./tooltip": {
+      "types": "./dist/components/ui/tooltip.d.ts",
+      "import": "./dist/tooltip.js"
+    },
+    "./scroll-area": {
+      "types": "./dist/components/ui/scroll-area.d.ts",
+      "import": "./dist/scroll-area.js"
     }
   },
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "typesVersions": {
     "*": {
-      "utils": [
-        "./dist/lib/utils.d.ts"
-      ],
-      "button": [
-        "./dist/components/ui/button.d.ts"
-      ],
-      "badge": [
-        "./dist/components/ui/badge.d.ts"
-      ],
-      "group-button": [
-        "./dist/components/ui/group-button.d.ts"
-      ],
-      "checkbox": [
-        "./dist/components/ui/checkbox.d.ts"
-      ],
-      "chip": [
-        "./dist/components/ui/chip.d.ts"
-      ],
-      "input": [
-        "./dist/components/ui/input.d.ts"
-      ],
-      "radio-group": [
-        "./dist/components/ui/radio-group.d.ts"
-      ],
-      "breadcrumb": [
-        "./dist/components/ui/breadcrumb.d.ts"
-      ],
-      "heading": [
-        "./dist/components/ui/heading.d.ts"
-      ],
-      "popover": [
-        "./dist/components/ui/popover.d.ts"
-      ],
-      "alert-dialog": [
-        "./dist/components/ui/alert-dialog.d.ts"
-      ],
-      "dialog": [
-        "./dist/components/ui/dialog.d.ts"
-      ],
-      "command": [
-        "./dist/components/ui/command.d.ts"
-      ],
-      "dropdown": [
-        "./dist/components/ui/dropdown.d.ts"
-      ],
-      "tabs": [
-        "./dist/components/ui/tabs.d.ts"
-      ],
-      "toggle": [
-        "./dist/components/ui/toggle.d.ts"
-      ],
-      "pagination": [
-        "./dist/components/ui/pagination.d.ts"
-      ],
-      "steps": [
-        "./dist/components/ui/steps.d.ts"
-      ],
-      "calendar": [
-        "./dist/components/ui/calendar.d.ts"
-      ],
-      "date-picker": [
-        "./dist/components/ui/date-picker.d.ts"
-      ],
-      "sheet": [
-        "./dist/components/ui/sheet.d.ts"
-      ]
+      "utils": ["./dist/lib/utils.d.ts"],
+      "button": ["./dist/components/ui/button.d.ts"],
+      "badge": ["./dist/components/ui/badge.d.ts"],
+      "group-button": ["./dist/components/ui/group-button.d.ts"],
+      "checkbox": ["./dist/components/ui/checkbox.d.ts"],
+      "chip": ["./dist/components/ui/chip.d.ts"],
+      "input": ["./dist/components/ui/input.d.ts"],
+      "radio-group": ["./dist/components/ui/radio-group.d.ts"],
+      "breadcrumb": ["./dist/components/ui/breadcrumb.d.ts"],
+      "heading": ["./dist/components/ui/heading.d.ts"],
+      "popover": ["./dist/components/ui/popover.d.ts"],
+      "alert-dialog": ["./dist/components/ui/alert-dialog.d.ts"],
+      "dialog": ["./dist/components/ui/dialog.d.ts"],
+      "command": ["./dist/components/ui/command.d.ts"],
+      "dropdown": ["./dist/components/ui/dropdown.d.ts"],
+      "tabs": ["./dist/components/ui/tabs.d.ts"],
+      "toggle": ["./dist/components/ui/toggle.d.ts"],
+      "pagination": ["./dist/components/ui/pagination.d.ts"],
+      "steps": ["./dist/components/ui/steps.d.ts"],
+      "calendar": ["./dist/components/ui/calendar.d.ts"],
+      "date-picker": ["./dist/components/ui/date-picker.d.ts"],
+      "sheet": ["./dist/components/ui/sheet.d.ts"],
+      "separator": ["./dist/components/ui/separator.d.ts"],
+      "accordion": ["./dist/components/ui/accordion.d.ts"],
+      "skeleton": ["./dist/components/ui/skeleton.d.ts"],
+      "table": ["./dist/components/ui/table.d.ts"],
+      "textarea": ["./dist/components/ui/textarea.d.ts"],
+      "tooltip": ["./dist/components/ui/tooltip.d.ts"],
+      "scroll-area": ["./dist/components/ui/scroll-area.d.ts"]
     }
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "build": "rslib build",
     "build:storybook": "storybook build",
