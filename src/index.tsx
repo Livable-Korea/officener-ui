@@ -214,3 +214,45 @@ export {
   sheetVariants,
 } from "@/components/ui/sheet";
 export type { SheetContentProps } from "@/components/ui/sheet";
+
+export {
+  Separator,
+  separatorVariants,
+} from "@/components/ui/separator";
+export type { SeparatorProps } from "@/components/ui/separator";
+
+export { Skeleton } from "@/components/ui/skeleton";
+export type { SkeletonProps } from "@/components/ui/skeleton";
+
+export {
+  Textarea,
+  textareaVariants,
+} from "@/components/ui/textarea";
+export type { TextareaProps } from "@/components/ui/textarea";
+
+export {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+
+export { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+
+export {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+
+export {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
