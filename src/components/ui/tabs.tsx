@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
-import { type VariantProps, cva } from "class-variance-authority";
+import { cva } from "class-variance-authority";
 import * as React from "react";
 
 // CVA Variants
@@ -96,8 +96,8 @@ export interface TabItem {
   badge?: React.ReactNode;
 }
 
-export interface TabsComponentProps
-  extends VariantProps<typeof tabsListVariants> {
+export interface TabsComponentProps {
+  variant?: 'underline' | 'pill' | 'bar' | null;
   tabs: TabItem[];
   defaultValue?: string;
   value?: string;

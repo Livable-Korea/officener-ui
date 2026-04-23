@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { type VariantProps, cva } from "class-variance-authority";
+import { cva } from "class-variance-authority";
 import { add, format } from "date-fns";
 import { ko } from "date-fns/locale";
 import * as React from "react";
@@ -82,8 +82,9 @@ const datePickerVariants = {
 
 type TimeType = "none" | "panel" | "input";
 
-interface DatePickerBaseProps
-  extends VariantProps<typeof datePickerVariants.trigger> {
+interface DatePickerBaseProps {
+  size?: 'sm' | 'base' | 'md' | null;
+  status?: 'default' | 'error' | 'disabled' | null;
   placeholder?: string;
   disabled?: boolean;
   disabledDate?: (date: Date) => boolean;

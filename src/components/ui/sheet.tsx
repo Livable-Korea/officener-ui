@@ -1,5 +1,5 @@
 import * as SheetPrimitive from "@radix-ui/react-dialog";
-import { cva, type VariantProps } from "class-variance-authority";
+import { cva } from "class-variance-authority";
 import { X } from "lucide-react";
 import * as React from "react";
 
@@ -48,8 +48,8 @@ const sheetVariants = cva(
 );
 
 interface SheetContentProps
-  extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>,
-    VariantProps<typeof sheetVariants> {
+  extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content> {
+  side?: 'top' | 'bottom' | 'left' | 'right' | null;
   isOverlay?: boolean;
   showCloseButton?: boolean;
 }
