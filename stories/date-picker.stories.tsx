@@ -1,19 +1,19 @@
-import type { Meta, StoryObj } from "storybook-react-rsbuild";
-import { format } from "date-fns";
-import * as React from "react";
-import type { DateRange } from "react-day-picker";
-import { DatePicker } from "../src/components/ui/date-picker";
-import { Input } from "../src/components/ui/input";
+import { format } from 'date-fns';
+import * as React from 'react';
+import type { DateRange } from 'react-day-picker';
+import type { Meta, StoryObj } from 'storybook-react-rsbuild';
+import { DatePicker } from '../src/components/ui/date-picker';
+import { Input } from '../src/components/ui/input';
 
 // Storybook args 타입 (discriminated union 대신 통합 타입)
 interface DatePickerStoryArgs {
-  mode: "single" | "range";
-  size?: "sm" | "base" | "md";
+  mode: 'single' | 'range';
+  size?: 'sm' | 'base' | 'md';
   placeholder?: string;
   disabled?: boolean;
   error?: boolean;
   showArrow?: boolean;
-  timeType?: "none" | "panel" | "input";
+  timeType?: 'none' | 'panel' | 'input';
   formatString?: string;
   // Controls에 표시되지 않지만 문서화를 위해 포함
   value?: Date | DateRange;
@@ -28,10 +28,10 @@ interface DatePickerStoryArgs {
 }
 
 const meta: Meta<DatePickerStoryArgs> = {
-  title: "Components/DatePicker",
-  tags: ["autodocs"],
+  title: 'Components/DatePicker',
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   decorators: [
     (Story) => (
@@ -42,8 +42,8 @@ const meta: Meta<DatePickerStoryArgs> = {
   ],
   argTypes: {
     mode: {
-      control: "radio",
-      options: ["single", "range"],
+      control: 'radio',
+      options: ['single', 'range'],
       description: `**선택 모드**
 
 - \`single\`: 단일 날짜 선택. value 타입은 \`Date | undefined\`
@@ -52,12 +52,12 @@ const meta: Meta<DatePickerStoryArgs> = {
 Range 모드에서는 선택한 날짜들이 파란색 배경으로 연결되어 표시됩니다.`,
       table: {
         type: { summary: "'single' | 'range'" },
-        defaultValue: { summary: "single" },
+        defaultValue: { summary: 'single' },
       },
     },
     size: {
-      control: "select",
-      options: ["sm", "base", "md"],
+      control: 'select',
+      options: ['sm', 'base', 'md'],
       description: `**컴포넌트 크기**
 
 - \`sm\`: 높이 36px, 텍스트 13px (Small)
@@ -65,12 +65,12 @@ Range 모드에서는 선택한 날짜들이 파란색 배경으로 연결되어
 - \`md\`: 높이 48px, 텍스트 16px (Medium)`,
       table: {
         type: { summary: "'sm' | 'base' | 'md'" },
-        defaultValue: { summary: "sm" },
+        defaultValue: { summary: 'sm' },
       },
     },
     timeType: {
-      control: "select",
-      options: ["none", "panel", "input"],
+      control: 'select',
+      options: ['none', 'panel', 'input'],
       description: `**시간 선택 타입** (single 모드에서만 동작)
 
 - \`none\`: 시간 선택 없음, 날짜만 선택
@@ -80,33 +80,33 @@ Range 모드에서는 선택한 날짜들이 파란색 배경으로 연결되어
 \`panel\` 사용 시 오늘 날짜에서는 현재 시간 이전이 자동 비활성화됩니다.`,
       table: {
         type: { summary: "'none' | 'panel' | 'input'" },
-        defaultValue: { summary: "none" },
+        defaultValue: { summary: 'none' },
       },
     },
     disabled: {
-      control: "boolean",
+      control: 'boolean',
       description: `**비활성화 상태**
 
 \`true\`로 설정하면 버튼이 비활성화되어 클릭할 수 없습니다.
 배경색이 회색으로 변경되고 커서가 not-allowed로 표시됩니다.`,
       table: {
-        type: { summary: "boolean" },
-        defaultValue: { summary: "false" },
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
       },
     },
     error: {
-      control: "boolean",
+      control: 'boolean',
       description: `**에러 상태**
 
 \`true\`로 설정하면 빨간색 테두리로 표시됩니다.
 폼 유효성 검사 실패 시 사용합니다.`,
       table: {
-        type: { summary: "boolean" },
-        defaultValue: { summary: "false" },
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
       },
     },
     showArrow: {
-      control: "boolean",
+      control: 'boolean',
       description: `**화살표 아이콘 표시**
 
 \`true\`: 트리거 버튼 우측에 화살표(▼) 아이콘 표시
@@ -114,24 +114,24 @@ Range 모드에서는 선택한 날짜들이 파란색 배경으로 연결되어
 
 Popover가 열리면 아이콘이 180도 회전합니다.`,
       table: {
-        type: { summary: "boolean" },
-        defaultValue: { summary: "true" },
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'true' },
       },
     },
     placeholder: {
-      control: "text",
+      control: 'text',
       description: `**플레이스홀더 텍스트**
 
 날짜가 선택되지 않았을 때 표시되는 텍스트입니다.
 
 Range 모드에서는 "시작{placeholder}" - "종료{placeholder}" 형식으로 표시됩니다.`,
       table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "날짜 선택" },
+        type: { summary: 'string' },
+        defaultValue: { summary: '날짜 선택' },
       },
     },
     formatString: {
-      control: "text",
+      control: 'text',
       description: `**날짜 포맷** (date-fns 형식)
 
 선택된 날짜가 표시되는 형식입니다. date-fns 포맷 문자열을 사용합니다.
@@ -146,8 +146,8 @@ Range 모드에서는 "시작{placeholder}" - "종료{placeholder}" 형식으로
 - timeType="none" → \`yyyy.MM.dd\`
 - timeType="panel" → \`yyyy.MM.dd HH:mm\``,
       table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "yyyy.MM.dd 또는 yyyy.MM.dd HH:mm" },
+        type: { summary: 'string' },
+        defaultValue: { summary: 'yyyy.MM.dd 또는 yyyy.MM.dd HH:mm' },
       },
     },
     // ============================================
@@ -159,8 +159,8 @@ Range 모드에서는 "시작{placeholder}" - "종료{placeholder}" 형식으로
 - single 모드: \`Date | undefined\`
 - range 모드: \`DateRange | undefined\` (DateRange = { from?: Date, to?: Date })`,
       table: {
-        type: { summary: "Date | DateRange | undefined" },
-        category: "Required",
+        type: { summary: 'Date | DateRange | undefined' },
+        category: 'Required',
       },
       control: false,
     },
@@ -170,8 +170,8 @@ Range 모드에서는 "시작{placeholder}" - "종료{placeholder}" 형식으로
 - single 모드: \`(date: Date | undefined) => void\`
 - range 모드: \`(range: DateRange | undefined) => void\``,
       table: {
-        type: { summary: "(value) => void" },
-        category: "Required",
+        type: { summary: '(value) => void' },
+        category: 'Required',
       },
       control: false,
     },
@@ -189,8 +189,8 @@ disabledDate={(date) => date < new Date()}
 
 disabledDate={(date) => date.getDay() === 0 || date.getDay() === 6}`,
       table: {
-        type: { summary: "(date: Date) => boolean" },
-        category: "Optional",
+        type: { summary: '(date: Date) => boolean' },
+        category: 'Optional',
       },
       control: false,
     },
@@ -211,8 +211,8 @@ bottomElement={
 }
 \`\`\``,
       table: {
-        type: { summary: "React.ReactNode" },
-        category: "Optional",
+        type: { summary: 'React.ReactNode' },
+        category: 'Optional',
       },
       control: false,
     },
@@ -229,9 +229,9 @@ import { enUS } from 'date-fns/locale';
 <DatePicker locale={enUS} />
 \`\`\``,
       table: {
-        type: { summary: "Locale" },
-        defaultValue: { summary: "ko" },
-        category: "Optional",
+        type: { summary: 'Locale' },
+        defaultValue: { summary: 'ko' },
+        category: 'Optional',
       },
       control: false,
     },
@@ -241,8 +241,8 @@ import { enUS } from 'date-fns/locale';
 외부에서 Popover 열림/닫힘을 제어할 때 사용합니다.
 \`onOpenChange\`와 함께 사용하세요.`,
       table: {
-        type: { summary: "boolean" },
-        category: "Optional",
+        type: { summary: 'boolean' },
+        category: 'Optional',
       },
       control: false,
     },
@@ -252,8 +252,8 @@ import { enUS } from 'date-fns/locale';
 Popover가 열리거나 닫힐 때 호출됩니다.
 \`open\` prop과 함께 사용하여 제어 컴포넌트로 만들 수 있습니다.`,
       table: {
-        type: { summary: "(open: boolean) => void" },
-        category: "Optional",
+        type: { summary: '(open: boolean) => void' },
+        category: 'Optional',
       },
       control: false,
     },
@@ -263,8 +263,8 @@ Popover가 열리거나 닫힐 때 호출됩니다.
 range 모드에서 Popover가 닫힐 때 호출됩니다.
 선택이 완료되지 않은 상태(from만 선택)를 리셋할 때 사용합니다.`,
       table: {
-        type: { summary: "() => void" },
-        category: "Optional (Range only)",
+        type: { summary: '() => void' },
+        category: 'Optional (Range only)',
       },
       control: false,
     },
@@ -274,27 +274,27 @@ range 모드에서 Popover가 닫힐 때 호출됩니다.
 캘린더 내부 표시 형식을 커스터마이징합니다.
 주로 년/월 드롭다운 표시 형식을 변경할 때 사용합니다.`,
       table: {
-        type: { summary: "Partial<Formatters>" },
-        category: "Optional",
+        type: { summary: 'Partial<Formatters>' },
+        category: 'Optional',
       },
       control: false,
     },
   },
   args: {
-    mode: "single",
-    size: "sm",
+    mode: 'single',
+    size: 'sm',
     showArrow: true,
     disabled: false,
     error: false,
-    placeholder: "날짜 선택",
-    timeType: "none",
+    placeholder: '날짜 선택',
+    timeType: 'none',
   },
   render: function DefaultRender(args) {
     const [singleDate, setSingleDate] = React.useState<Date | undefined>(
-      undefined
+      undefined,
     );
     const [rangeDate, setRangeDate] = React.useState<DateRange | undefined>(
-      undefined
+      undefined,
     );
 
     // mode가 변경되면 state 초기화
@@ -303,7 +303,7 @@ range 모드에서 Popover가 닫힐 때 호출됩니다.
       setRangeDate(undefined);
     }, [args.mode]);
 
-    if (args.mode === "range") {
+    if (args.mode === 'range') {
       return (
         <div className="w-[280px]">
           <DatePicker
@@ -349,9 +349,9 @@ type Story = StoryObj<DatePickerStoryArgs>;
 
 export const Single: Story = {
   args: {
-    mode: "single",
-    size: "base",
-    placeholder: "날짜 선택",
+    mode: 'single',
+    size: 'base',
+    placeholder: '날짜 선택',
     showArrow: true,
     disabled: false,
     error: false,
@@ -359,7 +359,7 @@ export const Single: Story = {
   parameters: {
     docs: {
       description: {
-        story: "단일 날짜를 선택하는 기본 DatePicker입니다.",
+        story: '단일 날짜를 선택하는 기본 DatePicker입니다.',
       },
     },
   },
@@ -367,11 +367,11 @@ export const Single: Story = {
 
 export const SingleWithTimePanel: Story = {
   args: {
-    mode: "single",
-    size: "sm",
-    timeType: "panel",
-    placeholder: "날짜 및 시간 선택",
-    formatString: "yyyy.MM.dd HH:mm",
+    mode: 'single',
+    size: 'sm',
+    timeType: 'panel',
+    placeholder: '날짜 및 시간 선택',
+    formatString: 'yyyy.MM.dd HH:mm',
     showArrow: true,
   },
   parameters: {
@@ -408,11 +408,11 @@ export const SingleWithTimePanel: Story = {
 
 export const SingleWithBottomElement: Story = {
   args: {
-    mode: "single",
-    size: "md",
-    timeType: "none",
-    placeholder: "날짜 선택",
-    formatString: "yyyy.MM.dd HH:mm",
+    mode: 'single',
+    size: 'md',
+    timeType: 'none',
+    placeholder: '날짜 선택',
+    formatString: 'yyyy.MM.dd HH:mm',
   },
   parameters: {
     docs: {
@@ -425,15 +425,15 @@ export const SingleWithBottomElement: Story = {
   },
   render: function SingleWithBottomElementStory(args) {
     const [date, setDate] = React.useState<Date | undefined>(new Date());
-    const [hour, setHour] = React.useState("10");
-    const [minute, setMinute] = React.useState("30");
+    const [hour, setHour] = React.useState('10');
+    const [minute, setMinute] = React.useState('30');
 
     React.useEffect(() => {
       if (date) {
         const newDate = new Date(date);
         newDate.setHours(
           Number.parseInt(hour) || 0,
-          Number.parseInt(minute) || 0
+          Number.parseInt(minute) || 0,
         );
         setDate(newDate);
       }
@@ -482,9 +482,9 @@ export const SingleWithBottomElement: Story = {
 
 export const SingleWithDisabledDates: Story = {
   args: {
-    mode: "single",
-    size: "sm",
-    placeholder: "날짜 선택",
+    mode: 'single',
+    size: 'sm',
+    placeholder: '날짜 선택',
     showArrow: true,
   },
   parameters: {
@@ -536,9 +536,9 @@ disabledDate={(date) => holidays.some(h => h.toDateString() === date.toDateStrin
 
 export const Range: Story = {
   args: {
-    mode: "range",
-    size: "sm",
-    placeholder: "기간 선택",
+    mode: 'range',
+    size: 'sm',
+    placeholder: '기간 선택',
     showArrow: true,
     disabled: false,
     error: false,
@@ -558,16 +558,16 @@ export const Range: Story = {
 
 export const RangeWithDisabledPastDates: Story = {
   args: {
-    mode: "range",
-    size: "sm",
-    placeholder: "기간 선택",
+    mode: 'range',
+    size: 'sm',
+    placeholder: '기간 선택',
     showArrow: true,
   },
   parameters: {
     docs: {
       description: {
         story:
-          "Range 모드에서도 `disabledDate`를 사용하여 특정 날짜를 비활성화할 수 있습니다.",
+          'Range 모드에서도 `disabledDate`를 사용하여 특정 날짜를 비활성화할 수 있습니다.',
       },
     },
   },
@@ -600,8 +600,8 @@ export const RangeWithDisabledPastDates: Story = {
 
 export const Sizes: Story = {
   args: {
-    mode: "single",
-    placeholder: "날짜 선택",
+    mode: 'single',
+    placeholder: '날짜 선택',
   },
   parameters: {
     docs: {
@@ -670,17 +670,17 @@ export const Sizes: Story = {
 
 export const Disabled: Story = {
   args: {
-    mode: "single",
-    size: "sm",
+    mode: 'single',
+    size: 'sm',
     disabled: true,
-    placeholder: "비활성화됨",
+    placeholder: '비활성화됨',
     showArrow: true,
   },
   parameters: {
     docs: {
       description: {
         story:
-          "`disabled={true}`로 설정하면 클릭할 수 없는 비활성화 상태가 됩니다.",
+          '`disabled={true}`로 설정하면 클릭할 수 없는 비활성화 상태가 됩니다.',
       },
     },
   },
@@ -688,17 +688,17 @@ export const Disabled: Story = {
 
 export const ErrorState: Story = {
   args: {
-    mode: "single",
-    size: "sm",
+    mode: 'single',
+    size: 'sm',
     error: true,
-    placeholder: "날짜 선택",
+    placeholder: '날짜 선택',
     showArrow: true,
   },
   parameters: {
     docs: {
       description: {
         story:
-          "`error={true}`로 설정하면 빨간색 테두리로 에러 상태를 표시합니다.",
+          '`error={true}`로 설정하면 빨간색 테두리로 에러 상태를 표시합니다.',
       },
     },
   },
@@ -706,16 +706,16 @@ export const ErrorState: Story = {
 
 export const NoArrow: Story = {
   args: {
-    mode: "single",
-    size: "sm",
+    mode: 'single',
+    size: 'sm',
     showArrow: false,
-    placeholder: "날짜 선택",
+    placeholder: '날짜 선택',
   },
   parameters: {
     docs: {
       description: {
         story:
-          "`showArrow={false}`로 설정하면 트리거 버튼의 화살표 아이콘이 숨겨집니다.",
+          '`showArrow={false}`로 설정하면 트리거 버튼의 화살표 아이콘이 숨겨집니다.',
       },
     },
   },
@@ -727,10 +727,10 @@ export const NoArrow: Story = {
 
 export const CustomFormat: Story = {
   args: {
-    mode: "single",
-    size: "sm",
-    formatString: "yyyy년 MM월 dd일",
-    placeholder: "날짜 선택",
+    mode: 'single',
+    size: 'sm',
+    formatString: 'yyyy년 MM월 dd일',
+    placeholder: '날짜 선택',
     showArrow: true,
   },
   parameters: {
@@ -766,8 +766,8 @@ date-fns 포맷 문자열을 사용합니다. [date-fns format 문서](https://d
 
 export const CustomTrigger: Story = {
   args: {
-    mode: "single",
-    size: "sm",
+    mode: 'single',
+    size: 'sm',
   },
   parameters: {
     docs: {
@@ -798,7 +798,7 @@ children은 \`PopoverTrigger\`의 자식으로 들어가므로, 반드시 \`forw
           >
             <span>📅</span>
             <span>
-              {date ? format(date, "yyyy년 MM월 dd일") : "날짜를 선택하세요"}
+              {date ? format(date, 'yyyy년 MM월 dd일') : '날짜를 선택하세요'}
             </span>
           </button>
         </DatePicker>

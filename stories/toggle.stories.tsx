@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 import * as React from 'react';
+import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 import { Toggle } from '../src/components/ui/toggle';
 
 // ============================================

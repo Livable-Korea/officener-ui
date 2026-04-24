@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 import * as React from 'react';
+import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 import {
   StepConnector,
   StepItem,
@@ -116,7 +116,9 @@ export const AllSteps: Story = {
         <StepsComponent steps={sampleSteps} currentStep={1} />
       </div>
       <div>
-        <p className="mb-4 text-sm font-medium text-gray-700">Step 2 (진행중)</p>
+        <p className="mb-4 text-sm font-medium text-gray-700">
+          Step 2 (진행중)
+        </p>
         <StepsComponent steps={sampleSteps} currentStep={2} />
       </div>
       <div>
@@ -190,11 +192,7 @@ export const VoteSteps: Story = {
 
 export const WithoutNumbers: Story = {
   render: () => (
-    <StepsComponent
-      steps={sampleSteps}
-      currentStep={2}
-      showNumbers={false}
-    />
+    <StepsComponent steps={sampleSteps} currentStep={2} showNumbers={false} />
   ),
 };
 

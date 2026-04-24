@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 import { Home, Settings, User } from 'lucide-react';
 import * as React from 'react';
+import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 import { Badge } from '../src/components/ui/badge';
 import { TabsComponent } from '../src/components/ui/tabs';
 

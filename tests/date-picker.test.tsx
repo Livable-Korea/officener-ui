@@ -265,7 +265,9 @@ describe('DatePicker', () => {
       );
 
       fireEvent.click(screen.getByRole('button'));
-      const timeSlots = screen.getAllByRole('button', { name: /^\d{2}:\d{2}$/ });
+      const timeSlots = screen.getAllByRole('button', {
+        name: /^\d{2}:\d{2}$/,
+      });
       expect(timeSlots.length).toBe(144);
     });
 

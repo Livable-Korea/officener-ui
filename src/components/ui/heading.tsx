@@ -1,8 +1,8 @@
-import { Slot } from "@radix-ui/react-slot";
-import { cva } from "class-variance-authority";
-import * as React from "react";
+import { Slot } from '@radix-ui/react-slot';
+import { cva } from 'class-variance-authority';
+import * as React from 'react';
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 // ============================================
 // HeadingRoot - Container component
@@ -15,14 +15,14 @@ const HeadingRoot = React.forwardRef<HTMLDivElement, HeadingRootProps>(
   ({ className, children, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn("flex w-full flex-col gap-2 bg-white p-6", className)}
+      className={cn('flex w-full flex-col gap-2 bg-white p-6', className)}
       {...props}
     >
       {children}
     </div>
-  )
+  ),
 );
-HeadingRoot.displayName = "HeadingRoot";
+HeadingRoot.displayName = 'HeadingRoot';
 
 // ============================================
 // HeadingBreadcrumb - Breadcrumb slot
@@ -40,7 +40,7 @@ const HeadingBreadcrumb = React.forwardRef<
     {children}
   </div>
 ));
-HeadingBreadcrumb.displayName = "HeadingBreadcrumb";
+HeadingBreadcrumb.displayName = 'HeadingBreadcrumb';
 
 // ============================================
 // HeadingBadges - Badge container
@@ -54,14 +54,14 @@ const HeadingBadges = React.forwardRef<HTMLDivElement, HeadingBadgesProps>(
   ({ className, children, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn("flex items-center gap-2", className)}
+      className={cn('flex items-center gap-2', className)}
       {...props}
     >
       {children}
     </div>
-  )
+  ),
 );
-HeadingBadges.displayName = "HeadingBadges";
+HeadingBadges.displayName = 'HeadingBadges';
 
 // ============================================
 // HeadingContent - Main content area (title + right element)
@@ -75,14 +75,14 @@ const HeadingContent = React.forwardRef<HTMLDivElement, HeadingContentProps>(
   ({ className, children, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn("flex w-full items-center justify-between", className)}
+      className={cn('flex w-full items-center justify-between', className)}
       {...props}
     >
       {children}
     </div>
-  )
+  ),
 );
-HeadingContent.displayName = "HeadingContent";
+HeadingContent.displayName = 'HeadingContent';
 
 // ============================================
 // HeadingTabs - Tab container for multiple headings
@@ -96,38 +96,37 @@ const HeadingTabs = React.forwardRef<HTMLDivElement, HeadingTabsProps>(
     <div
       ref={ref}
       className={cn(
-        "flex items-center gap-6 text-2xl leading-9 font-semibold text-gray-900",
-        className
+        'flex items-center gap-6 text-2xl leading-9 font-semibold text-gray-900',
+        className,
       )}
       {...props}
     >
       {children}
     </div>
-  )
+  ),
 );
-HeadingTabs.displayName = "HeadingTabs";
+HeadingTabs.displayName = 'HeadingTabs';
 
 // ============================================
 // HeadingTab - Individual tab item with asChild
 // ============================================
 const headingTabVariants = cva(
-  "text-2xl leading-9 font-semibold transition-colors",
+  'text-2xl leading-9 font-semibold transition-colors',
   {
     variants: {
       state: {
-        active: "font-bold text-gray-900",
-        inactive: "text-gray-400 hover:text-gray-600",
-        static: "cursor-default text-gray-900",
+        active: 'font-bold text-gray-900',
+        inactive: 'text-gray-400 hover:text-gray-600',
+        static: 'cursor-default text-gray-900',
       },
     },
     defaultVariants: {
-      state: "inactive",
+      state: 'inactive',
     },
-  }
+  },
 );
 
-export interface HeadingTabProps
-  extends React.HTMLAttributes<HTMLElement> {
+export interface HeadingTabProps extends React.HTMLAttributes<HTMLElement> {
   state?: 'active' | 'inactive' | 'static' | null;
   asChild?: boolean;
   children: React.ReactNode;
@@ -135,7 +134,7 @@ export interface HeadingTabProps
 
 const HeadingTab = React.forwardRef<HTMLElement, HeadingTabProps>(
   ({ className, state, asChild = false, children, ...props }, ref) => {
-    const Comp = asChild ? Slot : "span";
+    const Comp = asChild ? Slot : 'span';
     return (
       <Comp
         ref={ref as React.Ref<HTMLSpanElement>}
@@ -145,9 +144,9 @@ const HeadingTab = React.forwardRef<HTMLElement, HeadingTabProps>(
         {children}
       </Comp>
     );
-  }
+  },
 );
-HeadingTab.displayName = "HeadingTab";
+HeadingTab.displayName = 'HeadingTab';
 
 // ============================================
 // HeadingTitle - Simple title (non-tabbed)
@@ -162,16 +161,16 @@ const HeadingTitle = React.forwardRef<HTMLHeadingElement, HeadingTitleProps>(
     <h1
       ref={ref}
       className={cn(
-        "text-2xl leading-9 font-semibold text-gray-900",
-        className
+        'text-2xl leading-9 font-semibold text-gray-900',
+        className,
       )}
       {...props}
     >
       {children}
     </h1>
-  )
+  ),
 );
-HeadingTitle.displayName = "HeadingTitle";
+HeadingTitle.displayName = 'HeadingTitle';
 
 // ============================================
 // HeadingActions - Right side action area
@@ -185,14 +184,14 @@ const HeadingActions = React.forwardRef<HTMLDivElement, HeadingActionsProps>(
   ({ className, children, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn("flex items-center gap-2", className)}
+      className={cn('flex items-center gap-2', className)}
       {...props}
     >
       {children}
     </div>
-  )
+  ),
 );
-HeadingActions.displayName = "HeadingActions";
+HeadingActions.displayName = 'HeadingActions';
 
 // ============================================
 // HeadingBottom - Bottom element area
@@ -207,9 +206,9 @@ const HeadingBottom = React.forwardRef<HTMLDivElement, HeadingBottomProps>(
     <div ref={ref} className={cn(className)} {...props}>
       {children}
     </div>
-  )
+  ),
 );
-HeadingBottom.displayName = "HeadingBottom";
+HeadingBottom.displayName = 'HeadingBottom';
 
 // ============================================
 // Compound Component

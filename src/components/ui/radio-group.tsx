@@ -60,9 +60,9 @@ RadioGroup.displayName = RadioGroupPrimitive.Root.displayName;
 
 export interface RadioGroupItemProps
   extends Omit<
-      React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>,
-      'size'
-    > {
+    React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>,
+    'size'
+  > {
   size?: 'md' | 'lg' | 'xl' | null;
   variant?: 'default' | 'error' | null;
   error?: boolean;

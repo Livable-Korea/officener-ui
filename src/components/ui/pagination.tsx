@@ -34,22 +34,19 @@ export interface PaginationContentProps extends React.ComponentProps<'ul'> {}
 
 export interface PaginationItemProps extends React.ComponentProps<'li'> {}
 
-export interface PaginationLinkProps
-  extends React.ComponentProps<'button'> {
+export interface PaginationLinkProps extends React.ComponentProps<'button'> {
   variant?: 'default' | 'circle' | null;
   state?: 'default' | 'active' | 'disabled' | null;
   isActive?: boolean;
   asChild?: boolean;
 }
 
-export interface PaginationControlProps
-  extends React.ComponentProps<'button'> {
+export interface PaginationControlProps extends React.ComponentProps<'button'> {
   variant?: 'default' | 'circle' | null;
   asChild?: boolean;
 }
 
-export interface PaginationEllipsisProps
-  extends React.ComponentProps<'span'> {
+export interface PaginationEllipsisProps extends React.ComponentProps<'span'> {
   variant?: 'default' | 'circle' | null;
 }
 
