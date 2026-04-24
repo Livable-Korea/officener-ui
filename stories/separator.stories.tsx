@@ -35,37 +35,27 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // ============================================
-// Horizontal (Default)
+// Overview
 // ============================================
 
-export const Horizontal: Story = {
+export const Overview: Story = {
   args: {
     orientation: 'horizontal',
   },
-  render: (args) => (
-    <div className="w-60">
-      <div className="text-sm text-gray-700">위 콘텐츠</div>
-      <Separator {...args} className="my-3" />
-      <div className="text-sm text-gray-700">아래 콘텐츠</div>
-    </div>
-  ),
-};
-
-// ============================================
-// Vertical
-// ============================================
-
-export const Vertical: Story = {
-  args: {
-    orientation: 'vertical',
-  },
-  render: (args) => (
-    <div className="flex items-center gap-3 h-12 text-sm text-gray-700">
-      <span>좌측</span>
-      <Separator {...args} />
-      <span>우측</span>
-    </div>
-  ),
+  render: (args) =>
+    args.orientation === 'vertical' ? (
+      <div className="flex h-12 items-center gap-3 text-sm text-gray-700">
+        <span>좌측</span>
+        <Separator {...args} />
+        <span>우측</span>
+      </div>
+    ) : (
+      <div className="w-60">
+        <div className="text-sm text-gray-700">위 콘텐츠</div>
+        <Separator {...args} className="my-3" />
+        <div className="text-sm text-gray-700">아래 콘텐츠</div>
+      </div>
+    ),
 };
 
 // ============================================
