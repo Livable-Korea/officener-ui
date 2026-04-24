@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 import { Plus, X } from 'lucide-react';
 import * as React from 'react';
+import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 import { Chip } from '../src/components/ui/chip';
 
 const meta = {

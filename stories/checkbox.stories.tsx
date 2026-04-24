@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 import React from 'react';
+import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 import { Checkbox } from '../src/components/ui/checkbox';
 
 const meta = {

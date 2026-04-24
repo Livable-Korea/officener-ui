@@ -1,54 +1,54 @@
-import { cn } from "@/lib/utils";
-import { cva } from "class-variance-authority";
-import { format } from "date-fns";
-import { ko } from "date-fns/locale";
+import { cn } from '@/lib/utils';
+import { cva } from 'class-variance-authority';
+import { format } from 'date-fns';
+import { ko } from 'date-fns/locale';
 import {
   ChevronDownIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
-} from "lucide-react";
-import * as React from "react";
+} from 'lucide-react';
+import * as React from 'react';
 import {
+  DayPicker,
   type DayPickerProps,
   type DayButtonProps as RDPDayButtonProps,
-  DayPicker,
   getDefaultClassNames,
-} from "react-day-picker";
-import { Button, buttonVariants } from "./button";
-import { Dropdown } from "./dropdown";
+} from 'react-day-picker';
+import { Button, buttonVariants } from './button';
+import { Dropdown } from './dropdown';
 
 const calendarVariants = {
-  root: cva("w-fit rounded-lg bg-background text-gray-800", {
+  root: cva('w-fit rounded-lg bg-background text-gray-800', {
     variants: {
       size: {
-        sm: "w-[280px] px-5 py-3",
-        base: "w-[290px] px-5 py-3.5",
-        md: "w-[300px] px-6 py-4",
+        sm: 'w-[280px] px-5 py-3',
+        base: 'w-[290px] px-5 py-3.5',
+        md: 'w-[300px] px-6 py-4',
       },
     },
     defaultVariants: {
-      size: "sm",
+      size: 'sm',
     },
   }),
   dayButton: cva(
-    "flex size-9 flex-col items-center justify-center gap-1 rounded-full font-normal leading-none text-gray-800",
+    'flex size-9 flex-col items-center justify-center gap-1 rounded-full font-normal leading-none text-gray-800',
     {
       variants: {
         variant: {
-          default: "hover:bg-gray-50 active:bg-gray-100",
-          selected: "bg-blue-500 text-white",
-          rangeStart: "rounded-r-none bg-blue-500 text-white",
-          rangeEnd: "rounded-l-none bg-blue-500 text-white",
-          rangeMiddle: "rounded-none bg-blue-50 text-gray-800",
-          outside: "text-gray-200",
-          disabled: "cursor-not-allowed opacity-50",
-          today: "bg-gray-100",
+          default: 'hover:bg-gray-50 active:bg-gray-100',
+          selected: 'bg-blue-500 text-white',
+          rangeStart: 'rounded-r-none bg-blue-500 text-white',
+          rangeEnd: 'rounded-l-none bg-blue-500 text-white',
+          rangeMiddle: 'rounded-none bg-blue-50 text-gray-800',
+          outside: 'text-gray-200',
+          disabled: 'cursor-not-allowed opacity-50',
+          today: 'bg-gray-100',
         },
       },
       defaultVariants: {
-        variant: "default",
+        variant: 'default',
       },
-    }
+    },
   ),
 };
 
@@ -60,8 +60,8 @@ function Calendar({
   className,
   classNames,
   showOutsideDays = true,
-  captionLayout = "dropdown",
-  size = "sm",
+  captionLayout = 'dropdown',
+  size = 'sm',
   formatters,
   components,
   ...props
@@ -77,95 +77,95 @@ function Calendar({
         calendarVariants.root({ size }),
         String.raw`rtl:**:[.rdp-button\_next>svg]:rotate-180`,
         String.raw`rtl:**:[.rdp-button\_previous>svg]:rotate-180`,
-        className
+        className,
       )}
       captionLayout={captionLayout}
       formatters={{
-        formatMonthDropdown: (date) => format(date, "MM", { locale: ko }),
-        formatWeekdayName: (weekday) => format(weekday, "eee", { locale: ko }),
+        formatMonthDropdown: (date) => format(date, 'MM', { locale: ko }),
+        formatWeekdayName: (weekday) => format(weekday, 'eee', { locale: ko }),
         ...formatters,
       }}
       classNames={{
-        root: cn("w-full", defaultClassNames.root),
+        root: cn('w-full', defaultClassNames.root),
         months: cn(
-          "flex items-center justify-center flex-col md:flex-row relative",
-          defaultClassNames.months
+          'flex items-center justify-center flex-col md:flex-row relative',
+          defaultClassNames.months,
         ),
-        month: cn("flex flex-col w-full gap-4", defaultClassNames.month),
+        month: cn('flex flex-col w-full gap-4', defaultClassNames.month),
         nav: cn(
-          "flex items-center gap-1 h-9 w-full absolute top-0 inset-x-0 justify-between z-20 pointer-events-none",
-          defaultClassNames.nav
+          'flex items-center gap-1 h-9 w-full absolute top-0 inset-x-0 justify-between z-20 pointer-events-none',
+          defaultClassNames.nav,
         ),
         button_previous: cn(
-          buttonVariants({ variant: "ghostGray" }),
-          "aria-disabled:opacity-50 p-2.5 select-none rounded-full pointer-events-auto",
-          defaultClassNames.button_previous
+          buttonVariants({ variant: 'ghostGray' }),
+          'aria-disabled:opacity-50 p-2.5 select-none rounded-full pointer-events-auto',
+          defaultClassNames.button_previous,
         ),
         button_next: cn(
-          buttonVariants({ variant: "ghostGray" }),
-          "aria-disabled:opacity-50 p-2.5 select-none rounded-full pointer-events-auto",
-          defaultClassNames.button_next
+          buttonVariants({ variant: 'ghostGray' }),
+          'aria-disabled:opacity-50 p-2.5 select-none rounded-full pointer-events-auto',
+          defaultClassNames.button_next,
         ),
         month_caption: cn(
-          "flex items-center justify-center h-9 w-full",
-          defaultClassNames.month_caption
+          'flex items-center justify-center h-9 w-full',
+          defaultClassNames.month_caption,
         ),
         dropdowns: cn(
           defaultClassNames.dropdowns,
-          "w-full flex items-center text-sm font-medium justify-center h-9 gap-1.5 relative z-10"
+          'w-full flex items-center text-sm font-medium justify-center h-9 gap-1.5 relative z-10',
         ),
         dropdown_root: cn(
-          "relative has-focus:border-ring w-[72px] flex items-center border border-input shadow-xs has-focus:ring-ring/50 has-focus:ring-[3px] rounded-lg px-3 pr-2 z-10",
-          defaultClassNames.dropdown_root
+          'relative has-focus:border-ring w-[72px] flex items-center border border-input shadow-xs has-focus:ring-ring/50 has-focus:ring-[3px] rounded-lg px-3 pr-2 z-10',
+          defaultClassNames.dropdown_root,
         ),
         dropdown: cn(
-          "absolute bg-popover inset-0 opacity-0",
-          defaultClassNames.dropdown
+          'absolute bg-popover inset-0 opacity-0',
+          defaultClassNames.dropdown,
         ),
         caption_label: cn(
-          captionLayout === "label"
-            ? "text-sm"
-            : "flex grow items-center justify-between gap-1 text-sm h-8 [&>svg]:text-muted-foreground [&>svg]:size-3",
-          defaultClassNames.caption_label
+          captionLayout === 'label'
+            ? 'text-sm'
+            : 'flex grow items-center justify-between gap-1 text-sm h-8 [&>svg]:text-muted-foreground [&>svg]:size-3',
+          defaultClassNames.caption_label,
         ),
-        table: "w-full border-collapse",
-        weekdays: cn("flex", defaultClassNames.weekdays),
+        table: 'w-full border-collapse',
+        weekdays: cn('flex', defaultClassNames.weekdays),
         weekday: cn(
-          "text-gray-500 size-9 flex items-center justify-center font-normal text-sm select-none",
-          defaultClassNames.weekday
+          'text-gray-500 size-9 flex items-center justify-center font-normal text-sm select-none',
+          defaultClassNames.weekday,
         ),
-        week: cn("flex w-full mt-2", defaultClassNames.week),
+        week: cn('flex w-full mt-2', defaultClassNames.week),
         week_number_header: cn(
-          "select-none w-(--cell-size)",
-          defaultClassNames.week_number_header
+          'select-none w-(--cell-size)',
+          defaultClassNames.week_number_header,
         ),
         week_number: cn(
-          "text-[0.8rem] select-none text-muted-foreground",
-          defaultClassNames.week_number
+          'text-[0.8rem] select-none text-muted-foreground',
+          defaultClassNames.week_number,
         ),
         day: cn(
-          "relative size-9 p-0 text-center group/day aspect-square select-none",
-          defaultClassNames.day
+          'relative size-9 p-0 text-center group/day aspect-square select-none',
+          defaultClassNames.day,
         ),
         range_start: cn(
-          "rounded-l-full bg-accent",
-          defaultClassNames.range_start
+          'rounded-l-full bg-accent',
+          defaultClassNames.range_start,
         ),
-        range_middle: cn("rounded-none", defaultClassNames.range_middle),
-        range_end: cn("rounded-r-full bg-accent", defaultClassNames.range_end),
+        range_middle: cn('rounded-none', defaultClassNames.range_middle),
+        range_end: cn('rounded-r-full bg-accent', defaultClassNames.range_end),
         today: cn(
-          "bg-accent text-accent-foreground rounded-full data-[selected=true]:rounded-none",
-          defaultClassNames.today
+          'bg-accent text-accent-foreground rounded-full data-[selected=true]:rounded-none',
+          defaultClassNames.today,
         ),
         outside: cn(
-          "text-gray-200 aria-selected:text-white",
-          defaultClassNames.outside
+          'text-gray-200 aria-selected:text-white',
+          defaultClassNames.outside,
         ),
         disabled: cn(
-          "text-muted-foreground opacity-50",
-          defaultClassNames.disabled
+          'text-muted-foreground opacity-50',
+          defaultClassNames.disabled,
         ),
-        hidden: cn("invisible", defaultClassNames.hidden),
+        hidden: cn('invisible', defaultClassNames.hidden),
         ...classNames,
       }}
       components={{
@@ -182,25 +182,25 @@ function Calendar({
           orientation,
           ...chevronProps
         }) => {
-          if (orientation === "left") {
+          if (orientation === 'left') {
             return (
               <ChevronLeftIcon
-                className={cn("size-4 text-gray-500", chevronClassName)}
+                className={cn('size-4 text-gray-500', chevronClassName)}
                 {...chevronProps}
               />
             );
           }
-          if (orientation === "right") {
+          if (orientation === 'right') {
             return (
               <ChevronRightIcon
-                className={cn("size-4 text-gray-500", chevronClassName)}
+                className={cn('size-4 text-gray-500', chevronClassName)}
                 {...chevronProps}
               />
             );
           }
           return (
             <ChevronDownIcon
-              className={cn("size-4", chevronClassName)}
+              className={cn('size-4', chevronClassName)}
               {...chevronProps}
             />
           );
@@ -224,7 +224,7 @@ function Calendar({
 
           return (
             <Dropdown
-              value={value !== undefined ? String(value) : ""}
+              value={value !== undefined ? String(value) : ''}
               setValue={(newValue: string) => {
                 if (!onChange) return;
                 const numValue = Number(newValue);
@@ -289,27 +289,27 @@ function CalendarDayButton({
       data-range-end={modifiers.range_end}
       data-range-middle={modifiers.range_middle}
       className={cn(
-        "flex size-9 flex-col gap-1 rounded-full font-normal leading-none text-gray-800",
-        "data-[range-middle=true]:rounded-none data-[range-end=true]:rounded-l-none data-[range-start=true]:rounded-r-none",
-        "data-[range-end=true]:bg-blue-500 data-[range-middle=true]:bg-blue-50 data-[range-start=true]:bg-blue-500 data-[selected-single=true]:bg-blue-500",
-        "data-[range-end=true]:text-white data-[range-middle=true]:text-gray-800 data-[range-start=true]:text-white data-[selected-single=true]:text-white",
+        'flex size-9 flex-col gap-1 rounded-full font-normal leading-none text-gray-800',
+        'data-[range-middle=true]:rounded-none data-[range-end=true]:rounded-l-none data-[range-start=true]:rounded-r-none',
+        'data-[range-end=true]:bg-blue-500 data-[range-middle=true]:bg-blue-50 data-[range-start=true]:bg-blue-500 data-[selected-single=true]:bg-blue-500',
+        'data-[range-end=true]:text-white data-[range-middle=true]:text-gray-800 data-[range-start=true]:text-white data-[selected-single=true]:text-white',
         modifiers.outside &&
           !modifiers.selected &&
           !modifiers.range_start &&
           !modifiers.range_end &&
           !modifiers.range_middle &&
-          "text-gray-200",
-        modifiers.outside && modifiers.range_selected && "bg-blue-100",
-        modifiers.disabled && "opacity-50",
+          'text-gray-200',
+        modifiers.outside && modifiers.range_selected && 'bg-blue-100',
+        modifiers.disabled && 'opacity-50',
         defaultClassNames.day,
         className,
-        modifiers.range_start && modifiers.range_end && "!rounded-full"
+        modifiers.range_start && modifiers.range_end && '!rounded-full',
       )}
       {...props}
     />
   );
 }
-CalendarDayButton.displayName = "CalendarDayButton";
-Calendar.displayName = "Calendar";
+CalendarDayButton.displayName = 'CalendarDayButton';
+Calendar.displayName = 'Calendar';
 
 export { Calendar, CalendarDayButton, calendarVariants };

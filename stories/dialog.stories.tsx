@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 import * as React from 'react';
+import type { Meta, StoryObj } from 'storybook-react-rsbuild';
 import { Button } from '../src/components/ui/button';
 import {
   Dialog,
@@ -10,8 +10,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '../src/components/ui/dialog';
-import { Input } from '../src/components/ui/input';
 import { Dropdown } from '../src/components/ui/dropdown';
+import { Input } from '../src/components/ui/input';
 
 // ============================================
 // Dialog Meta
@@ -76,7 +76,8 @@ export const WithoutCloseButton: Story = {
           </DialogHeader>
           <div className="p-6 pt-0">
             <DialogDescription>
-              DialogHeader의 close prop을 false로 설정하면 닫기 버튼이 숨겨집니다.
+              DialogHeader의 close prop을 false로 설정하면 닫기 버튼이
+              숨겨집니다.
             </DialogDescription>
           </div>
           <DialogFooter>
@@ -166,8 +167,8 @@ export const WithDropdown: Story = {
               />
             </div>
             <DialogDescription>
-              Dialog 내에서 Dropdown이 정상 동작하는지 확인합니다. 스크롤과 선택이
-              제대로 되어야 합니다.
+              Dialog 내에서 Dropdown이 정상 동작하는지 확인합니다. 스크롤과
+              선택이 제대로 되어야 합니다.
             </DialogDescription>
           </div>
           <DialogFooter>
@@ -259,7 +260,9 @@ export const Sizes: Story = {
               <DialogTitle>Small Dialog</DialogTitle>
             </DialogHeader>
             <div className="p-6 pt-0">
-              <DialogDescription>작은 사이즈의 다이얼로그입니다.</DialogDescription>
+              <DialogDescription>
+                작은 사이즈의 다이얼로그입니다.
+              </DialogDescription>
             </div>
             <DialogFooter>
               <Button>확인</Button>
@@ -276,7 +279,9 @@ export const Sizes: Story = {
               <DialogTitle>Medium Dialog</DialogTitle>
             </DialogHeader>
             <div className="p-6 pt-0">
-              <DialogDescription>중간 사이즈의 다이얼로그입니다.</DialogDescription>
+              <DialogDescription>
+                중간 사이즈의 다이얼로그입니다.
+              </DialogDescription>
             </div>
             <DialogFooter>
               <Button>확인</Button>
@@ -293,7 +298,9 @@ export const Sizes: Story = {
               <DialogTitle>Large Dialog</DialogTitle>
             </DialogHeader>
             <div className="p-6 pt-0">
-              <DialogDescription>큰 사이즈의 다이얼로그입니다.</DialogDescription>
+              <DialogDescription>
+                큰 사이즈의 다이얼로그입니다.
+              </DialogDescription>
             </div>
             <DialogFooter>
               <Button>확인</Button>
