@@ -142,6 +142,21 @@ export {
 export type { TabItem, TabsComponentProps } from '@/components/ui/tabs';
 
 export {
+  Carousel,
+  CarouselContent,
+  CarouselDots,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  useCarousel,
+} from '@/components/ui/carousel';
+export type {
+  CarouselApi,
+  CarouselOptions,
+  CarouselPlugin,
+} from '@/components/ui/carousel';
+
+export {
   Toggle,
   toggleThumbVariants,
   toggleVariants,
