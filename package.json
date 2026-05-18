@@ -1,6 +1,6 @@
 {
   "name": "@officener-dev/ui",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "type": "module",
   "exports": {
     ".": {
@@ -70,6 +70,10 @@
     "./tabs": {
       "types": "./dist/components/ui/tabs.d.ts",
       "import": "./dist/tabs.js"
+    },
+    "./carousel": {
+      "types": "./dist/components/ui/carousel.d.ts",
+      "import": "./dist/carousel.js"
     },
     "./toggle": {
       "types": "./dist/components/ui/toggle.d.ts",
@@ -144,6 +148,7 @@
       "command": ["./dist/components/ui/command.d.ts"],
       "dropdown": ["./dist/components/ui/dropdown.d.ts"],
       "tabs": ["./dist/components/ui/tabs.d.ts"],
+      "carousel": ["./dist/components/ui/carousel.d.ts"],
       "toggle": ["./dist/components/ui/toggle.d.ts"],
       "pagination": ["./dist/components/ui/pagination.d.ts"],
       "steps": ["./dist/components/ui/steps.d.ts"],
@@ -183,6 +188,8 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.4",
+    "embla-carousel-autoplay": "^8.6.0",
+    "embla-carousel-react": "^8.6.0",
     "react-day-picker": "^9.5.0",
     "tailwind-merge": "^3.0.2"
   },
