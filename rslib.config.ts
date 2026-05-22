@@ -34,6 +34,7 @@ export default defineConfig({
       textarea: './src/components/ui/textarea.tsx',
       tooltip: './src/components/ui/tooltip.tsx',
       'scroll-area': './src/components/ui/scroll-area.tsx',
+      'file-upload': './src/components/ui/file-upload.tsx',
     },
   },
   lib: [

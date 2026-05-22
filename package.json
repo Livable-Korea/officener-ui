@@ -122,6 +122,10 @@
     "./scroll-area": {
       "types": "./dist/components/ui/scroll-area.d.ts",
       "import": "./dist/scroll-area.js"
+    },
+    "./file-upload": {
+      "types": "./dist/components/ui/file-upload.d.ts",
+      "import": "./dist/file-upload.js"
     }
   },
   "module": "./dist/index.js",
@@ -156,7 +160,8 @@
       "table": ["./dist/components/ui/table.d.ts"],
       "textarea": ["./dist/components/ui/textarea.d.ts"],
       "tooltip": ["./dist/components/ui/tooltip.d.ts"],
-      "scroll-area": ["./dist/components/ui/scroll-area.d.ts"]
+      "scroll-area": ["./dist/components/ui/scroll-area.d.ts"],
+      "file-upload": ["./dist/components/ui/file-upload.d.ts"]
     }
   },
   "files": ["dist"],
