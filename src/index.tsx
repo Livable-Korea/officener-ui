@@ -239,6 +239,15 @@ export type { SeparatorProps } from '@/components/ui/separator';
 export { Skeleton } from '@/components/ui/skeleton';
 export type { SkeletonProps } from '@/components/ui/skeleton';
 
+export { FileUpload, PRESET_TO_ACCEPT } from '@/components/ui/file-upload';
+export type {
+  FileAcceptPreset,
+  FileAcceptValue,
+  FileExtension,
+  FileMimeType,
+  FileUploadProps,
+} from '@/components/ui/file-upload';
+
 export {
   Textarea,
   textareaVariants,
