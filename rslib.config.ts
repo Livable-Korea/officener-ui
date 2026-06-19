@@ -27,6 +27,7 @@ export default defineConfig({
       steps: './src/components/ui/steps.tsx',
       calendar: './src/components/ui/calendar.tsx',
       'date-picker': './src/components/ui/date-picker.tsx',
+      'month-picker': './src/components/ui/month-picker.tsx',
       sheet: './src/components/ui/sheet.tsx',
       separator: './src/components/ui/separator.tsx',
       accordion: './src/components/ui/accordion.tsx',
