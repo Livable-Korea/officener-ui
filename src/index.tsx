@@ -215,6 +215,9 @@ export type {
 export { DatePicker, datePickerVariants } from '@/components/ui/date-picker';
 export type { DatePickerProps } from '@/components/ui/date-picker';
 
+export { MonthPicker, monthPickerVariants } from '@/components/ui/month-picker';
+export type { MonthPickerProps } from '@/components/ui/month-picker';
+
 export {
   Sheet,
   SheetClose,
