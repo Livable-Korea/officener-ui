@@ -1,6 +1,6 @@
 {
   "name": "@officener-dev/ui",
-  "version": "1.1.11",
+  "version": "1.1.12",
   "type": "module",
   "exports": {
     ".": {
@@ -94,6 +94,10 @@
     "./date-picker": {
       "types": "./dist/components/ui/date-picker.d.ts",
       "import": "./dist/date-picker.js"
+    },
+    "./month-picker": {
+      "types": "./dist/components/ui/month-picker.d.ts",
+      "import": "./dist/month-picker.js"
     },
     "./sheet": {
       "types": "./dist/components/ui/sheet.d.ts",
@@ -201,6 +205,9 @@
       ],
       "date-picker": [
         "./dist/components/ui/date-picker.d.ts"
+      ],
+      "month-picker": [
+        "./dist/components/ui/month-picker.d.ts"
       ],
       "sheet": [
         "./dist/components/ui/sheet.d.ts"
