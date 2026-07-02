@@ -5,7 +5,6 @@ import type { Locale } from 'date-fns';
 import { ko } from 'date-fns/locale';
 import { ArrowDown2, ArrowLeft2, ArrowRight2 } from 'iconsax-react';
 import * as React from 'react';
-import { Dropdown } from './dropdown';
 import { Popover, PopoverContent, PopoverTrigger } from './popover';
 
 const MONTH_LABELS = [
@@ -61,7 +60,7 @@ interface MonthPickerProps {
   disabled?: boolean;
   /** 비활성 월 판단 (해당 월 1일 기준 Date 전달) */
   disabledMonth?: (date: Date) => boolean;
-  /** 연도 드롭다운 시작/끝 (기본: 현재연도-10 ~ 현재연도+1) */
+  /** 화살표 이동 가능 연도 범위 시작/끝 (기본: 현재연도-10 ~ 현재연도+1) */
   fromYear?: number;
   toYear?: number;
   /** 트리거 표시 포맷 (date-fns). 기본 'yyyy.MM' */
@@ -76,7 +75,7 @@ interface MonthPickerProps {
 }
 
 /**
- * 월 선택 picker — 디자인 시스템 Figma 스펙(연/월 드롭다운 + 좌우 연도 이동 + 12개월 그리드).
+ * 월 선택 picker — 디자인 시스템 Figma 스펙(좌우 월 이동 + 연.월 라벨 + 12개월 그리드).
  * value/onChange controlled. 값은 해당 월 1일 기준 Date.
  */
 function MonthPicker({
@@ -125,24 +124,6 @@ function MonthPicker({
   }, [isOpen, value]);
 
   const resolvedStatus = error ? 'error' : disabled ? 'disabled' : status;
-
-  const yearOptions = React.useMemo(() => {
-    const list: { value: string; label: string }[] = [];
-    for (let y = maxYear; y >= minYear; y -= 1) {
-      list.push({ value: String(y), label: String(y) });
-    }
-    return list;
-  }, [minYear, maxYear]);
-
-  const monthOptions = React.useMemo(
-    () =>
-      MONTH_LABELS.map((_, m) => ({
-        value: String(m + 1),
-        label: String(m + 1),
-        disabled: disabledMonth?.(new Date(year, m, 1)) ?? false,
-      })),
-    [year, disabledMonth],
-  );
 
   const selectedOnThisYear =
     value !== undefined && value.getFullYear() === year;
@@ -200,7 +181,7 @@ function MonthPicker({
         )}
       </PopoverTrigger>
       <PopoverContent className="flex w-auto flex-col gap-3 rounded-lg border border-gray-300 px-6 py-4">
-        {/* 헤더: 좌우 연도 이동 + 연/월 드롭다운 */}
+        {/* 헤더: 좌우 월 이동 + 연.월 라벨 */}
         <div className="flex items-center justify-between gap-2">
           <button
             type="button"
@@ -211,23 +192,11 @@ function MonthPicker({
           >
             <ArrowLeft2 size={16} color="#6b7280" variant="Outline" />
           </button>
-          <div className="flex items-center gap-1">
-            <Dropdown
-              value={String(year)}
-              setValue={(v) => setYear(Number(v))}
-              data={yearOptions}
-              placeholder="연도"
-              size="sm"
-              className="w-[84px]"
-            />
-            <Dropdown
-              value={String(displayMonth + 1)}
-              setValue={(v) => selectMonth(Number(v) - 1, false)}
-              data={monthOptions}
-              placeholder="월"
-              size="sm"
-              className="w-[64px]"
-            />
+          {/* 헤더 중앙: 현재 연.월 표시 라벨 (Figma "2025. 7") */}
+          <div className="flex items-center rounded px-2 py-0.5">
+            <span className="text-base font-bold leading-6 text-gray-900">
+              {`${year}. ${displayMonth + 1}`}
+            </span>
           </div>
           <button
             type="button"
