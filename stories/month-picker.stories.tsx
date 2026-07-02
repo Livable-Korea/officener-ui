@@ -44,7 +44,7 @@ const meta: Meta<MonthPickerStoryArgs> = {
     onChange: {
       control: false,
       description:
-        '**월 변경 콜백** — 그리드 선택 / 화살표 이동 / 월 드롭다운 시 호출. `(date: Date) => void`',
+        '**월 변경 콜백** — 그리드 선택 / 화살표 이동 시 호출. `(date: Date) => void`',
       table: { type: { summary: '(date: Date | undefined) => void' } },
     },
     onPrev: {
@@ -110,12 +110,12 @@ const meta: Meta<MonthPickerStoryArgs> = {
     disabledMonth: {
       control: false,
       description:
-        '**비활성 월 판단** — 해당 월 1일 기준 Date를 받아 `true`면 비활성. 그리드 칸 + 월 드롭다운 + 화살표에 모두 적용.',
+        '**비활성 월 판단** — 해당 월 1일 기준 Date를 받아 `true`면 비활성. 그리드 칸 + 화살표에 모두 적용.',
       table: { type: { summary: '(date: Date) => boolean' } },
     },
     fromYear: {
       control: 'number',
-      description: '**연도 드롭다운 시작 연도**',
+      description: '**화살표 이동 가능 시작 연도**',
       table: {
         type: { summary: 'number' },
         defaultValue: { summary: '현재연도 - 10' },
@@ -123,7 +123,7 @@ const meta: Meta<MonthPickerStoryArgs> = {
     },
     toYear: {
       control: 'number',
-      description: '**연도 드롭다운 끝 연도**',
+      description: '**화살표 이동 가능 끝 연도**',
       table: {
         type: { summary: 'number' },
         defaultValue: { summary: '현재연도 + 1' },
