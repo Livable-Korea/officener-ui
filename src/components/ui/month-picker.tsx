@@ -50,9 +50,9 @@ interface MonthPickerProps {
   /** 선택된 월(해당 월의 임의 일자). 미선택 시 undefined */
   value: Date | undefined;
   onChange: (date: Date | undefined) => void;
-  /** 이전 달(`‹`) 클릭 시 — 이동된 월(1일) Date 전달. 기본 동작(onChange) 후 호출. */
+  /** 이전(`‹`) 클릭 시 — 이동된 월(1일, year 모드는 이동된 연도 1월 1일) Date 전달. 기본 동작 후 호출. */
   onPrev?: (date: Date) => void;
-  /** 다음 달(`›`) 클릭 시 — 이동된 월(1일) Date 전달. 기본 동작(onChange) 후 호출. */
+  /** 다음(`›`) 클릭 시 — 이동된 월(1일, year 모드는 이동된 연도 1월 1일) Date 전달. 기본 동작 후 호출. */
   onNext?: (date: Date) => void;
   size?: 'sm' | 'base' | 'md' | null;
   status?: 'default' | 'error' | 'disabled' | null;
@@ -63,6 +63,8 @@ interface MonthPickerProps {
   /** 화살표 이동 가능 연도 범위 시작/끝 (기본: 현재연도-10 ~ 현재연도+1) */
   fromYear?: number;
   toYear?: number;
+  /** 헤더 좌우 화살표 이동 단위. 'month'(기본): 한 달 이동 + 즉시 onChange 커밋. 'year': 그리드 연도만 변경(onChange 커밋 없음) */
+  navigationUnit?: 'month' | 'year';
   /** 트리거 표시 포맷 (date-fns). 기본 'yyyy.MM' */
   formatString?: string;
   className?: string;
@@ -90,6 +92,7 @@ function MonthPicker({
   disabledMonth,
   fromYear,
   toYear,
+  navigationUnit = 'month',
   formatString = 'yyyy.MM',
   className,
   showArrow = true,
@@ -118,10 +121,12 @@ function MonthPicker({
     () => value?.getFullYear() ?? currentYear,
   );
 
-  // 팝오버를 다시 열 때 선택값 기준 연도로 동기화
+  // 팝오버를 다시 열 때 선택값(미선택 시 현재 연도) 기준으로 동기화하고 fromYear/toYear로 클램프
   React.useEffect(() => {
-    if (isOpen && value) setYear(value.getFullYear());
-  }, [isOpen, value]);
+    if (!isOpen) return;
+    const targetYear = value?.getFullYear() ?? currentYear;
+    setYear(Math.min(Math.max(targetYear, minYear), maxYear));
+  }, [isOpen, value, currentYear, minYear, maxYear]);
 
   const resolvedStatus = error ? 'error' : disabled ? 'disabled' : status;
 
@@ -136,20 +141,36 @@ function MonthPicker({
     if (close) handleOpenChange(false);
   };
 
+  const isYearUnit = navigationUnit === 'year';
+
   // 좌우 화살표 = 선택 월 ±1개월(연도 경계 자동 이동). 선택값 없으면 현재 월 기준.
   const baseDate = value ?? new Date(currentYear, new Date().getMonth(), 1);
   const prevDate = new Date(baseDate.getFullYear(), baseDate.getMonth() - 1, 1);
   const nextDate = new Date(baseDate.getFullYear(), baseDate.getMonth() + 1, 1);
-  const prevDisabled =
-    prevDate.getFullYear() < minYear || (disabledMonth?.(prevDate) ?? false);
-  const nextDisabled =
-    nextDate.getFullYear() > maxYear || (disabledMonth?.(nextDate) ?? false);
+  const prevDisabled = isYearUnit
+    ? year - 1 < minYear
+    : prevDate.getFullYear() < minYear || (disabledMonth?.(prevDate) ?? false);
+  const nextDisabled = isYearUnit
+    ? year + 1 > maxYear
+    : nextDate.getFullYear() > maxYear || (disabledMonth?.(nextDate) ?? false);
 
   const stepMonth = (target: Date, notify?: (date: Date) => void) => {
     onChange(target);
     setYear(target.getFullYear());
     notify?.(target);
   };
+
+  // 연도 단위 이동은 그리드 표시 연도만 바꾸고 선택값(onChange)은 건드리지 않는다
+  const stepYear = (offset: 1 | -1, notify?: (date: Date) => void) => {
+    const nextYear = year + offset;
+    setYear(nextYear);
+    notify?.(new Date(nextYear, 0, 1));
+  };
+
+  const handlePrev = () =>
+    isYearUnit ? stepYear(-1, onPrev) : stepMonth(prevDate, onPrev);
+  const handleNext = () =>
+    isYearUnit ? stepYear(1, onNext) : stepMonth(nextDate, onNext);
 
   return (
     <Popover open={isOpen} onOpenChange={handleOpenChange}>
@@ -185,24 +206,24 @@ function MonthPicker({
         <div className="flex items-center justify-between gap-2">
           <button
             type="button"
-            aria-label="이전 달"
+            aria-label={isYearUnit ? '이전 연도' : '이전 달'}
             disabled={prevDisabled}
-            onClick={() => stepMonth(prevDate, onPrev)}
+            onClick={handlePrev}
             className="flex size-9 shrink-0 items-center justify-center rounded-full hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-30"
           >
             <ArrowLeft2 size={16} color="#6b7280" variant="Outline" />
           </button>
-          {/* 헤더 중앙: 현재 연.월 표시 라벨 (Figma "2025. 7") */}
+          {/* 헤더 중앙: 현재 연.월 표시 라벨 (Figma "2025. 7") — 연도 이동 모드는 연도만 */}
           <div className="flex items-center rounded px-2 py-0.5">
             <span className="text-base font-bold leading-6 text-gray-900">
-              {`${year}. ${displayMonth + 1}`}
+              {isYearUnit ? `${year}년` : `${year}. ${displayMonth + 1}`}
             </span>
           </div>
           <button
             type="button"
-            aria-label="다음 달"
+            aria-label={isYearUnit ? '다음 연도' : '다음 달'}
             disabled={nextDisabled}
-            onClick={() => stepMonth(nextDate, onNext)}
+            onClick={handleNext}
             className="flex size-9 shrink-0 items-center justify-center rounded-full hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-30"
           >
             <ArrowRight2 size={16} color="#6b7280" variant="Outline" />

@@ -16,6 +16,7 @@ interface MonthPickerStoryArgs {
   disabledMonth?: (date: Date) => boolean;
   fromYear?: number;
   toYear?: number;
+  navigationUnit?: 'month' | 'year';
   formatString?: string;
   showArrow?: boolean;
   error?: boolean;
@@ -129,6 +130,18 @@ const meta: Meta<MonthPickerStoryArgs> = {
         defaultValue: { summary: '현재연도 + 1' },
       },
     },
+    navigationUnit: {
+      control: 'select',
+      options: ['month', 'year'],
+      description: `**헤더 좌우 화살표 이동 단위**
+
+- \`month\`: 한 달 이동 + 즉시 onChange 커밋
+- \`year\`: 그리드 연도만 변경 (onChange 커밋 없음, 헤더는 연도만 표시)`,
+      table: {
+        type: { summary: "'month' | 'year'" },
+        defaultValue: { summary: 'month' },
+      },
+    },
     formatString: {
       control: 'text',
       description: '**트리거 표시 포맷** (date-fns)',
@@ -190,6 +203,22 @@ export const CustomButtonTrigger: Story = {
         </Button>
       </MonthPicker>
     );
+  },
+};
+
+/** 연도 이동 모드 — 화살표가 그리드 연도만 바꾸고 선택(onChange)은 그리드 클릭 시에만 커밋 */
+export const YearNavigation: Story = {
+  args: {
+    size: 'sm',
+    placeholder: '전체',
+    navigationUnit: 'year',
+    fromYear: 2024,
+  },
+  render: (args) => {
+    const [value, setValue] = React.useState<Date | undefined>(
+      new Date(2026, 6, 1),
+    );
+    return <MonthPicker {...args} value={value} onChange={setValue} />;
   },
 };
 
