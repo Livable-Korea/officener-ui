@@ -49,6 +49,7 @@ export interface FileUploadProps
   dragText?: string;
   hint?: string;
   disabled?: boolean;
+  error?: string;
 }
 
 const FileUpload = React.forwardRef<HTMLLabelElement, FileUploadProps>(
@@ -60,6 +61,7 @@ const FileUpload = React.forwardRef<HTMLLabelElement, FileUploadProps>(
       dragText = '또는 파일을 여기로 드래그하세요',
       hint,
       disabled = false,
+      error,
       className,
       ...props
     },
@@ -104,70 +106,87 @@ const FileUpload = React.forwardRef<HTMLLabelElement, FileUploadProps>(
     };
 
     return (
-      <label
-        ref={ref}
-        onDragEnter={handleDragEnter}
-        onDragLeave={handleDragLeave}
-        onDragOver={handleDragOver}
-        onDrop={handleDrop}
-        className={cn(
-          'flex h-[140px] w-full cursor-pointer flex-col items-center justify-center gap-2 rounded-[10px] border-2 border-dashed border-gray-300 bg-white p-5 transition-colors hover:border-blue-400',
-          dragOver && 'border-blue-500',
-          disabled && 'pointer-events-none opacity-40',
-          className,
-        )}
-        {...props}
-      >
-        <DocumentUpload size={24} variant="Bold" color="#D1D5DB" />
-        <div className={cn('flex', 'items-center', 'justify-center', 'gap-1')}>
-          <span
-            className={cn(
-              'rounded-lg',
-              'border',
-              'border-blue-100',
-              'bg-blue-50',
-              'px-2',
-              'py-1',
-              'text-sm',
-              'font-medium',
-              'leading-5',
-              'text-blue-500',
-            )}
-          >
-            {buttonLabel}
-          </span>
-          <span
-            className={cn(
-              'text-sm',
-              'font-medium',
-              'leading-5',
-              'text-gray-500',
-            )}
-          >
-            {dragText}
-          </span>
-        </div>
-        {hint && (
+      <div className="flex w-full flex-col gap-1.5">
+        <label
+          ref={ref}
+          onDragEnter={handleDragEnter}
+          onDragLeave={handleDragLeave}
+          onDragOver={handleDragOver}
+          onDrop={handleDrop}
+          className={cn(
+            'flex h-[140px] w-full cursor-pointer flex-col items-center justify-center gap-2 rounded-[10px] border-2 border-dashed border-gray-300 bg-white p-5 transition-colors',
+            !error && 'hover:border-blue-400',
+            dragOver && 'border-blue-500',
+            error && 'border-red-500',
+            disabled && 'pointer-events-none opacity-40',
+            className,
+          )}
+          {...props}
+        >
+          <DocumentUpload size={24} variant="Bold" color="#D1D5DB" />
+          <div className={cn('flex', 'items-center', 'justify-center', 'gap-1')}>
+            <span
+              className={cn(
+                'rounded-lg',
+                'border',
+                'border-blue-100',
+                'bg-blue-50',
+                'px-2',
+                'py-1',
+                'text-sm',
+                'font-medium',
+                'leading-5',
+                'text-blue-500',
+              )}
+            >
+              {buttonLabel}
+            </span>
+            <span
+              className={cn(
+                'text-sm',
+                'font-medium',
+                'leading-5',
+                'text-gray-500',
+              )}
+            >
+              {dragText}
+            </span>
+          </div>
+          {hint && (
+            <p
+              className={cn(
+                'text-center',
+                'text-sm',
+                'font-normal',
+                'leading-5',
+                'text-gray-400',
+              )}
+            >
+              {hint}
+            </p>
+          )}
+          <input
+            type="file"
+            accept={resolvedAccept}
+            disabled={disabled}
+            className="hidden"
+            onChange={handleChange}
+          />
+        </label>
+        {error && (
           <p
             className={cn(
               'text-center',
               'text-sm',
               'font-normal',
               'leading-5',
-              'text-gray-400',
+              'text-red-500',
             )}
           >
-            {hint}
+            {error}
           </p>
         )}
-        <input
-          type="file"
-          accept={resolvedAccept}
-          disabled={disabled}
-          className="hidden"
-          onChange={handleChange}
-        />
-      </label>
+      </div>
     );
   },
 );
