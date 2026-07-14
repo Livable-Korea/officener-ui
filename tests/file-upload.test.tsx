@@ -156,4 +156,18 @@ describe('FileUpload', () => {
     render(<FileUpload onFileSelect={() => undefined} ref={ref} />);
     expect(ref.current).toBeInstanceOf(HTMLLabelElement);
   });
+
+  it('shows red border and error message when error is provided', () => {
+    const { container } = render(
+      <FileUpload onFileSelect={() => undefined} error="파일을 첨부해주세요." />,
+    );
+    const label = container.querySelector('label') as HTMLLabelElement;
+    expect(label).toHaveClass('border-red-500');
+    expect(screen.getByText('파일을 첨부해주세요.')).toBeInTheDocument();
+  });
+
+  it('does not render error message when error is omitted', () => {
+    render(<FileUpload onFileSelect={() => undefined} />);
+    expect(screen.queryByText('파일을 첨부해주세요.')).not.toBeInTheDocument();
+  });
 });
